@@ -26,6 +26,8 @@
 								<option defaultValue="gnu.cpp.compiler.debugging.level.none" id="gnu.cpp.compiler.mingw.exe.release.option.debugging.level.1989277106" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.release.option.debugging.level" useByScannerDiscovery="false" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.compiler.option.include.paths.1710114926" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mingw-w64-x86_64-static-piwebapi-ucdavis/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mingw-w64-x86_64-static-piwebapi-ucdavis/third_party}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mingw-w64-x86_64-static-piwebapi-ucdavis/src_curl}&quot;"/>
 								</option>
 								<option id="gnu.cpp.compiler.option.dialect.std.151618975" name="Language standard" superClass="gnu.cpp.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.cpp.compiler.dialect.default" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.dialect.flags.328269859" name="Other dialect flags" superClass="gnu.cpp.compiler.option.dialect.flags" useByScannerDiscovery="true" value="-std=c++17" valueType="string"/>
@@ -42,13 +44,29 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mingw-w64-x86_64-static-piwebapi-ucdavis/lib}&quot;"/>
 								</option>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.link.option.libs.114586488" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" useByScannerDiscovery="false" valueType="libs">
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_system-mt"/>
-									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="boost_filesystem-mt"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="curl"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="nghttp2"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="psl.dll"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="idn2"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="gnutls"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="ssl"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="crypto"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="cares"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="gdi32"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="wldap32"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="ssh2"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="brotlidec-static"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="brotlienc-static"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="brotlicommon-static"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="unistring"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="iconv"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="z"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="stdc++"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="gcc"/>
 									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="ws2_32"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="bcrypt"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="advapi32"/>
+									<listOptionValue builtIn="false" srcPrefixMapping="" srcRootPath="" value="crypt32"/>
 								</option>
 								<option id="gnu.cpp.link.option.flags.1068041094" name="Linker flags" superClass="gnu.cpp.link.option.flags" useByScannerDiscovery="false" value="-static-libgcc -static-libstdc++ -static" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.697228038" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
@@ -87,4 +105,5 @@
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope"/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cproject>
