@@ -79,15 +79,15 @@ target_link_directories(${EXENAME} PRIVATE
 
 target_link_libraries(${EXENAME} PRIVATE
 Qt5::Widgets
-libcurl
-libnghttp2
-libpsl.dll
-libidn2
-libgnutls
-libssl
-libcrypto
-libcares
-libssh2
+curl
+nghttp2
+psl.dll
+idn2
+gnutls
+ssl
+crypto
+cares
+ssh2
 brotlidec-static
 brotlienc-static
 brotlicommon-static
