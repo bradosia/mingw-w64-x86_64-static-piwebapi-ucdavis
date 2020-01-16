@@ -10,10 +10,10 @@
 #define PWA_UCD_AMALGAMATED_H
 
 // c++17
-#include <string>
-#include <functional>
+#include <filesystem>
 #include <iostream>
 #include <memory>
+#include <string>
 #include <unordered_map>
 
 // c
@@ -22,10 +22,11 @@
 
 /*
  * CURL 7.68.0
+ * License: MIT/X inspired
  */
 #define CURL_STATICLIB
-#include <curl/curl.h>
 #include <brotli/decode.h>
+#include <curl/curl.h>
 
 /* CURL EXE 7.68.0
  * Taken from the source from the CURL executable
@@ -39,23 +40,38 @@
 
 /* rapidjson v1.1 (2016-8-25)
  * Developed by Tencent
+ * License: MITs
  */
 #include "rapidjson/document.h"
-#include "rapidjson/stringbuffer.h"
 #include "rapidjson/reader.h" // rapidjson::ParseResult
+#include "rapidjson/stringbuffer.h"
+
+/* QT 5.13.2-1
+ * License: LGPLv3
+ */
+#include <QApplication>
+#include <QFile>
+#include <QTreeView>
 
 /*
  * PWA_UCD = PI Web API for UC Davis
  */
 namespace PWA_UCD {
 
-CURLcode http_get(struct GlobalConfig *global) {
-	CURLcode result = CURLE_OK;
+/* Writes data from HTTP request into a string buffer
+ * @param ptr data address
+ */
+size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s);
+/* Makes an HTTPS GET request to the URI
+ * @param URI The address
+ */
+rapidjson::Document HTTPS_GET_JSON(std::string URI);
+void printJSON_value(const rapidjson::Value &a, unsigned int depth);
+void printJSON_iterator(rapidjson::Value::ConstMemberIterator &itr,
+                        unsigned int depth);
 
-	return result;
-}
+} // namespace PWA_UCD
 
-}
- // end PWA_UCD
+// end PWA_UCD
 
 #endif
