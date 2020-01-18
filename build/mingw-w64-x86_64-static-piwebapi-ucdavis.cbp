@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="mingw-w64-x86_64-static-piwebapi-ucdavis"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\msys64\;CMake Files\..\..\msys64\mingw64\;CMake Files\..\..\msys64\mingw64\lib\;CMake Files\..\..\msys64\mingw64\lib\cmake\;CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5\;CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Widgets\;CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\;CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Core\;CMake Files\resources\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/msys64/mingw64/bin/ninja.exe -v all"/>
+					<CompileFile command="C:/msys64/mingw64/bin/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+					<DistClean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/msys64/mingw64/bin/ninja.exe -v install/strip"/>
+					<CompileFile command="C:/msys64/mingw64/bin/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+					<DistClean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/msys64/mingw64/bin/ninja.exe -v install/local"/>
+					<CompileFile command="C:/msys64/mingw64/bin/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+					<DistClean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/msys64/mingw64/bin/ninja.exe -v edit_cache"/>
+					<CompileFile command="C:/msys64/mingw64/bin/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+					<DistClean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/msys64/mingw64/bin/ninja.exe -v rebuild_cache"/>
+					<CompileFile command="C:/msys64/mingw64/bin/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+					<DistClean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="piwebapi-ucdavis">
+				<Option output="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add directory="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"/>
+					<Add directory="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis"/>
+					<Add directory="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/include"/>
+					<Add directory="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/include"/>
+					<Add directory="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/third_party"/>
+					<Add directory="C:/msys64/mingw64/include"/>
+					<Add directory="C:/msys64/mingw64/include/QtWidgets"/>
+					<Add directory="C:/msys64/mingw64/include/QtGui"/>
+					<Add directory="C:/msys64/mingw64/include/QtCore"/>
+					<Add directory="C:/msys64/mingw64/share/qt5/mkspecs/win32-g++"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include/c++/9.2.0/x86_64-w64-mingw32"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/include"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/include-fixed"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/msys64/mingw64/bin/ninja.exe -v piwebapi-ucdavis"/>
+					<CompileFile command="C:/msys64/mingw64/bin/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+					<DistClean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="piwebapi-ucdavis/fast">
+				<Option output="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add directory="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"/>
+					<Add directory="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis"/>
+					<Add directory="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/include"/>
+					<Add directory="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/include"/>
+					<Add directory="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/third_party"/>
+					<Add directory="C:/msys64/mingw64/include"/>
+					<Add directory="C:/msys64/mingw64/include/QtWidgets"/>
+					<Add directory="C:/msys64/mingw64/include/QtGui"/>
+					<Add directory="C:/msys64/mingw64/include/QtCore"/>
+					<Add directory="C:/msys64/mingw64/share/qt5/mkspecs/win32-g++"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include/c++/9.2.0"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include/c++/9.2.0/x86_64-w64-mingw32"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include/c++/9.2.0/backward"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/include"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../include"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/include-fixed"/>
+					<Add directory="C:/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/9.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/msys64/mingw64/bin/ninja.exe -v piwebapi-ucdavis/fast"/>
+					<CompileFile command="C:/msys64/mingw64/bin/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+					<DistClean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/msys64/mingw64/bin/ninja.exe -v list_install_components"/>
+					<CompileFile command="C:/msys64/mingw64/bin/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+					<DistClean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/msys64/mingw64/bin/ninja.exe -v install"/>
+					<CompileFile command="C:/msys64/mingw64/bin/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+					<DistClean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="piwebapi-ucdavis_autogen">
+				<Option working_dir="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/msys64/mingw64/bin/ninja.exe -v piwebapi-ucdavis_autogen"/>
+					<CompileFile command="C:/msys64/mingw64/bin/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+					<DistClean command="C:/msys64/mingw64/bin/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/3YJK5W5UP7/qrc_icons_file.cpp">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/3YJK5W5UP7/qrc_icons_file.cpp.rule">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/3YJK5W5UP7/qrc_icons_utility.cpp">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/3YJK5W5UP7/qrc_icons_utility.cpp.rule">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/3YJK5W5UP7/qrc_simpletreemodel.cpp">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/3YJK5W5UP7/qrc_simpletreemodel.cpp.rule">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/mocs_compilation.cpp">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/include/piwebapi-ucdavis/amalgamated.h">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/include/piwebapi-ucdavis/config.h">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/include/piwebapi-ucdavis/mainwindow.h">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/include/piwebapi-ucdavis/treeitem.h">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/include/piwebapi-ucdavis/treemodel.h">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/resources/icons_file.qrc">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/resources/icons_utility.qrc">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/resources/simpletreemodel.qrc">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/src/amalgamated.cpp">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/src/main.cpp">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/src/mainwindow.cpp">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/src/mainwindow.ui">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/src/treeitem.cpp">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/src/treemodel.cpp">
+			<Option target="piwebapi-ucdavis"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5/Qt5Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5/Qt5ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5/Qt5ModuleLocation.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Widgets/Qt5Widgets_QWindowsVistaStylePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5GuiConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QGifPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QICNSPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QICOPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QJp2Plugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QJpegPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QMinimalIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QOffscreenIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QTgaPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QTiffPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QTuioTouchPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QVirtualKeyboardPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QWbmpPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QWebGLIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QWebpPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QWindowsDirect2DIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Gui/Qt5Gui_QWindowsIntegrationPlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/../../msys64/mingw64/lib/cmake/Qt5Core/Qt5CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\msys64\mingw64\lib\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/resources/icons_file.qrc">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/resources/icons_utility.qrc">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+		<Unit filename="C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/resources/simpletreemodel.qrc">
+			<Option virtualFolder="CMake Files\resources\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

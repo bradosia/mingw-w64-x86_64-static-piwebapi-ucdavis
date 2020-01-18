@@ -1,0 +1,8 @@
+C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/CMakeFiles/install/strip.dir
+C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/CMakeFiles/install/local.dir
+C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/CMakeFiles/edit_cache.dir
+C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/CMakeFiles/rebuild_cache.dir
+C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/CMakeFiles/piwebapi-ucdavis.dir
+C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/CMakeFiles/list_install_components.dir
+C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/CMakeFiles/install.dir
+C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/CMakeFiles/piwebapi-ucdavis_autogen.dir

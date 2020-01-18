@@ -68,6 +68,7 @@ endif()
     include/piwebapi-ucdavis/treeitem.h
     include/piwebapi-ucdavis/treemodel.h
     include/piwebapi-ucdavis/amalgamated.h
+    include/piwebapi-ucdavis/config.h
     src/mainwindow.ui
     resources/icons_utility.qrc
     resources/icons_file.qrc

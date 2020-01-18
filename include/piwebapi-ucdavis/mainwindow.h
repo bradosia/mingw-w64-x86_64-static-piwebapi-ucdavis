@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QString>
 
+#include "piwebapi-ucdavis/config.h"
 #include "piwebapi-ucdavis/amalgamated.h"
 #include "piwebapi-ucdavis/treemodel.h"
 

@@ -1,0 +1,357 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "piwebapi-ucdavis.exe"
+		},
+		{
+			"path" : "piwebapi-ucdavis.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"install",
+			"target_include_directories",
+			"target_link_libraries"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 61,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 132,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 126,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 81,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -fexceptions -std=gnu++17 -fexceptions -g   -std=gnu++17"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 4,
+					"define" : "QT_GUI_LIB"
+				},
+				{
+					"backtrace" : 4,
+					"define" : "QT_WIDGETS_LIB"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"path" : "C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug"
+				},
+				{
+					"path" : "C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis"
+				},
+				{
+					"backtrace" : 0,
+					"path" : "C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/github/mingw-w64-x86_64-static-piwebapi-ucdavis/third_party"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "C:/msys64/mingw64/include/QtWidgets"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "C:/msys64/mingw64/include/QtGui"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "C:/msys64/mingw64/include/QtCore"
+				},
+				{
+					"backtrace" : 4,
+					"isSystem" : true,
+					"path" : "C:/msys64/mingw64/share/qt5/mkspecs/win32-g++"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				15,
+				16,
+				17
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 0,
+			"id" : "piwebapi-ucdavis_autogen::@6890427a1f51a3e7e1df"
+		}
+	],
+	"id" : "piwebapi-ucdavis::@6890427a1f51a3e7e1df",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 2,
+				"path" : "bin"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "C:/Program Files (x86)/mingw-w64-x86_64-static-piwebapi-ucdavis"
+		}
+	},
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-fexceptions -std=gnu++17 -fexceptions -g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-L\\lib",
+				"role" : "libraryPath"
+			},
+			{
+				"fragment" : "C:\\msys64\\mingw64\\lib\\libQt5Widgetsd.dll.a -lcurl -lnghttp2 -lpsl -lidn2 -lgnutls -lssl -lcrypto -lcares -lssh2 -lbrotlidec-static -lbrotlienc-static -lbrotlicommon-static -lunistring -lwldap32 -llibz -lbcrypt -lcrypt32 -lstdc++ -lgcc -lopengl32 -lglu32 -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lwinspool -lkernel32 -luser32 -lshell32 -luuid -lole32 -ladvapi32 -lws2_32 -lmingw32 -lrpcrt4 -ltiff -lstdc++fs C:\\msys64\\mingw64\\lib\\libQt5Guid.dll.a C:\\msys64\\mingw64\\lib\\libQt5Cored.dll.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "piwebapi-ucdavis",
+	"nameOnDisk" : "piwebapi-ucdavis.exe",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				15,
+				16,
+				17
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				6,
+				7,
+				8,
+				9,
+				10
+			]
+		},
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				11,
+				12,
+				13,
+				14
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				18,
+				19,
+				20
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/main.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/mainwindow.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/treeitem.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/treemodel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/amalgamated.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/piwebapi-ucdavis/mainwindow.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/piwebapi-ucdavis/treeitem.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/piwebapi-ucdavis/treemodel.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/piwebapi-ucdavis/amalgamated.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "include/piwebapi-ucdavis/config.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "src/mainwindow.ui",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "resources/icons_utility.qrc",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "resources/icons_file.qrc",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 1,
+			"path" : "resources/simpletreemodel.qrc",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/3YJK5W5UP7/qrc_icons_utility.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/3YJK5W5UP7/qrc_icons_file.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/3YJK5W5UP7/qrc_simpletreemodel.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/3YJK5W5UP7/qrc_icons_utility.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/3YJK5W5UP7/qrc_icons_file.cpp.rule",
+			"sourceGroupIndex" : 3
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "C:/github/build-mingw-w64-x86_64-static-piwebapi-ucdavis-Desktop-Debug/piwebapi-ucdavis_autogen/3YJK5W5UP7/qrc_simpletreemodel.cpp.rule",
+			"sourceGroupIndex" : 3
+		}
+	],
+	"type" : "EXECUTABLE"
+}
