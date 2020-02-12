@@ -1,132 +1,124 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.1)
 
-project(mingw-w64-x86_64-static-piwebapi-ucdavis LANGUAGES CXX)
+project(ucdavis-Pi-Web-API-Browser VERSION 1.0.0 LANGUAGES CXX)
+set(EXENAME ucdavis-Pi-Web-API-Browser)
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
+# Configurable Options
+set(BUILD_SHARED_LIBS ON)
+set(BUILD_STATIC_LIBS ON)
 
+# Automatically compile .ui to .h
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(EXENAME piwebapi-ucdavis)
+set(QTDIR $ENV{QTDIR})
 
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+set(CMAKE_PREFIX_PATH ${QTDIR})
+# set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
 
-# configure compiler
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED on)
-# generate proper GUI program on specified platform
-if(WIN32) # Check if we are on Windows
-        if(MINGW)
-            # COMPILER-SETTINGS FOR MINGW
-            SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions -std=gnu++17")
-            # SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} -mwindows")
-        elseif(MSVC) # Check if we are using the Visual Studio compiler
-            set_target_properties(${PROJECT_NAME} PROPERTIES
-                WIN32_EXECUTABLE YES
-                LINK_FLAGS "/ENTRY:mainCRTStartup"
-            )
-            # COMPILER-SETTINGS FOR MS VISUAL C++
-            SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc")
-            # To fix error: C2338: va_start argument must not
-            # have reference type and must not be parenthesized
-            add_definitions(/D_CRT_NO_VA_START_VALIDATION)
-            add_definitions(/DNOMINMAX)
-        else()
-            message(SEND_ERROR "You are using an unsupported Windows compiler! (Not MSVC or GCC)")
-        endif(MSVC)
-elseif(APPLE)
-        set_target_properties(${PROJECT_NAME} PROPERTIES
-                        MACOSX_BUNDLE YES
-        )
-elseif(UNIX)
-        # Nothing special required
-else()
-        message(SEND_ERROR "You are on an unsupported platform! (Not Win32, Mac OS X or Unix)")
-endif(WIN32)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_OSX_DEPLOYMENT_TARGET "10.10")
+
+find_package(Qt5Widgets REQUIRED)
+
+include_directories(
+  third_party
+  third_party/hjson/include
+
+  "${PROJECT_SOURCE_DIR}/src"
+  ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+link_directories(
+   ${CMAKE_CURRENT_SOURCE_DIR}/lib
+)
 
 
-if(MINGW)
-  # COMPILER-SETTINGS FOR MINGW
-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions")
-elseif(MSVC)
-  # COMPILER-SETTINGS FOR MS VISUAL C++
-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc")
-  # To fix error: C2338: va_start argument must not
-  # have reference type and must not be parenthesized
-  add_definitions(/D_CRT_NO_VA_START_VALIDATION)
-  add_definitions(/DNOMINMAX)
-endif()
+# cmake hjson
+add_subdirectory(third_party/hjson ${CMAKE_BINARY_DIR}/hjson)
+add_subdirectory(src/plugins)
 
- add_executable(${EXENAME}
-    src/main.cpp
-    src/mainwindow.cpp
-    src/treeitem.cpp
-    src/treemodel.cpp
-    src/amalgamated.cpp
-    include/piwebapi-ucdavis/mainwindow.h
-    include/piwebapi-ucdavis/treeitem.h
-    include/piwebapi-ucdavis/treemodel.h
-    include/piwebapi-ucdavis/amalgamated.h
-    include/piwebapi-ucdavis/config.h
-    src/mainwindow.ui
-    resources/icons_utility.qrc
-    resources/icons_file.qrc
-    resources/simpletreemodel.qrc
- )
+set(SOURCES ${SOURCES}
+  src/UI/main.cpp
+  src/UI/Application.cpp
+  src/UI/MainWindow.cpp
+  src/core/Plugins.cpp
 
-target_link_directories(${EXENAME} PRIVATE
-/lib/)
+  src/UI/Application.hpp
+  src/UI/MainWindow.hpp
+  src/UI/universalInclude.hpp
+  src/core/config.hpp
+  src/core/Plugins.hpp
+)
+
+set(RESOURCES ${RESOURCES}
+  src/UI/main.ui
+  resources/icons_utility.qrc
+  resources/icons_file.qrc
+  resources/simpletreemodel.qrc
+)
+
+add_executable(${EXENAME} ${SOURCES} ${RESOURCES})
 
 target_link_libraries(${EXENAME} PRIVATE
-Qt5::Widgets
-curl
-nghttp2
-psl.dll
-idn2
-gnutls
-ssl
-crypto
-cares
-ssh2
-brotlidec-static
-brotlienc-static
-brotlicommon-static
-unistring
-wldap32
-libz
-bcrypt
-crypt32
+  # QT5
+  Qt5::Widgets
 
-# static link a bunch of stuff
-stdc++
-gcc
-opengl32
-glu32
-gdi32
-comdlg32
-oleaut32
-imm32
-winmm
-winspool
-kernel32
-user32
-shell32
-uuid
-ole32
-advapi32
-ws2_32
-mingw32
-rpcrt4
-tiff
-# std::filesystem
-stdc++fs
+  # HJSON for loading settings files
+  hjson
+
+  # static link a bunch of stuff
+  z
+  windowscodecs
+  stdc++
+  gcc
+  opengl32
+  glu32
+  gdi32
+  comdlg32
+  oleaut32
+  imm32
+  winmm
+  winspool
+  kernel32
+  user32
+  shell32
+  uuid
+  ole32
+  advapi32
+  ws2_32
+  mingw32
+  rpcrt4
+  tiff
+  # std::filesystem
+  stdc++fs
 )
 
 target_include_directories(${EXENAME} PRIVATE
-include
-third_party
+  third_party
+  third_party/hjson/include
 )
 
-# Installation
-install(TARGETS ${EXENAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+if(APPLE)
+  find_library(COCOA_FRAMEWORK Cocoa)
+  target_link_libraries(${EXENAME} ${COCOA_FRAMEWORK})
+endif()
+
+if(WIN32)
+  set_target_properties(${EXENAME} PROPERTIES
+    WIN32 TRUE
+  )
+elseif(APPLE)
+  set_target_properties(${EXENAME} PROPERTIES
+    MACOSX_BUNDLE TRUE
+    RESOURCE "${RESOURCES}"
+  )
+endif()
+
+# Installation Directories
+
