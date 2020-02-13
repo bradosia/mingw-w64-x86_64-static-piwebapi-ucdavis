@@ -12,7 +12,7 @@ Plugins are compiled as shared libraries and are loaded using an interface speci
 These are the features and the library that is used to implement them. QT probably contains most of these libraries, but use of QT for anything other than UI will be discouraged.
 
 | Feature       | QT           | Other  |
-|: ------------- |:------------- |:----- |
+| ------------- | ------------- | ----- |
 | User Interface      | User Interface Compiler (UIC) |  |
 | Slots & Signals      | Meta-Object Compiler (MOC) |  |
 | Embedded Resources | Resource Compiler (RCC) | |
