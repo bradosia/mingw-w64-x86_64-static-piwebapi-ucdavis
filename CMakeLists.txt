@@ -47,13 +47,13 @@ set(SOURCES ${SOURCES}
   src/UI/main.cpp
   src/UI/Application.cpp
   src/UI/MainWindow.cpp
-  src/core/Plugins.cpp
+  src/UI/Plugins.cpp
 
   src/UI/Application.hpp
   src/UI/MainWindow.hpp
   src/UI/universalInclude.hpp
+  src/UI/Plugins.hpp
   src/core/config.hpp
-  src/core/Plugins.hpp
 )
 
 set(RESOURCES ${RESOURCES}
@@ -78,7 +78,6 @@ target_link_libraries(${EXENAME} PRIVATE
   stdc++
   gcc
   opengl32
-  glu32
   gdi32
   comdlg32
   oleaut32

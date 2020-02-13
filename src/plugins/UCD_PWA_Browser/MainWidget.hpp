@@ -20,13 +20,16 @@
 // Universal Include
 #include "universalInclude.hpp"
 
+#include "../../UI/Plugins.hpp"
+
 /*
  * UCD3DEM = UC Davis 3D Electricity Map
  */
 namespace UCD3DEM {
 
-class UCD_OSI_Data : public QWidget {
+class UCD_OSI_Data : public WidgetInterface {
   Q_OBJECT
+  Q_INTERFACES(WidgetInterface)
 
 public:
   UCD_OSI_Data(QWidget *parent) {}
@@ -47,6 +50,7 @@ void printJSON_iterator(rapidjson::Value::ConstMemberIterator &itr,
 void getSettingsFile(std::string settingsFileString,
                      std::string &inputURIString,
                      std::string &outputFileString);
+//void init() { printf("hiii"); }
 
 } // namespace UCD3DEM
 

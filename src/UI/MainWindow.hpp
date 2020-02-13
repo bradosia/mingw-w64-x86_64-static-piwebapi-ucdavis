@@ -18,6 +18,9 @@
 // universal includes
 #include "universalInclude.hpp"
 
+// local project
+#include "Plugins.hpp"
+
 class MainWindow : public QMainWindow {
   Q_OBJECT
 

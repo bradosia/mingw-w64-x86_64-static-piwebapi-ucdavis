@@ -179,18 +179,21 @@ if(BUILD_STATIC_LIBS)
   target_link_libraries(${lib_name} PUBLIC ${STATIC_LINK_LIBRARIES})
 endif()
 
+# Post build
+if(BUILD_SHARED_LIBS)
+    add_custom_command(TARGET ${libsh_name} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_BINARY_DIR}/plugins/")
+    add_custom_command(TARGET ${libsh_name} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${libsh_name}> "${CMAKE_BINARY_DIR}/plugins/")
+endif(BUILD_SHARED_LIBS)
 
 # Installation
 if(BUILD_SHARED_LIBS)
-  install(TARGETS ${libsh_name} EXPORT ${libsh_name}_TARGETS
+  message(STATUS "INSTALL: ${libsh_name} TO root=${CMAKE_BINARY_DIR} and current=${CMAKE_CURRENT_BINARY_DIR}")
+  install(TARGETS ${libsh_name}
     RUNTIME DESTINATION ${CMAKE_BINARY_DIR}
     ARCHIVE DESTINATION ${CMAKE_BINARY_DIR}
     LIBRARY DESTINATION ${CMAKE_BINARY_DIR}
-    INCLUDES DESTINATION ${CMAKE_BINARY_DIR}/${libIncludeSubdir}
-  )
-  install(EXPORT ${libsh_name}_TARGETS
-    FILE ${libsh_name}Config.cmake
-    DESTINATION lib/cmake/${libsh_name}
   )
   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${libsh_name}Version.cmake"
   DESTINATION lib/cmake/${libsh_name}  )
@@ -201,12 +204,12 @@ if(BUILD_STATIC_LIBS)
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${libIncludeSubdir}
   )
   install(EXPORT ${lib_name}_TARGETS
     FILE ${lib_name}Config.cmake
     DESTINATION lib/cmake/${lib_name}
   )
+
   install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${lib_name}Version.cmake"
   DESTINATION lib/cmake/${lib_name}  )
 endif(BUILD_STATIC_LIBS)

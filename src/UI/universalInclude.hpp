@@ -42,20 +42,28 @@
 /* QT 5.13.2-1
  * License: LGPLv3
  */
+#include <QAction>
+#include <QActionGroup>
 #include <QApplication>
+#include <QColorDialog>
 #include <QFile>
 #include <QFileDialog>
+#include <QHBoxLayout>
+#include <QInputDialog>
 #include <QMainWindow>
 #include <QMenu>
+#include <QMenuBar>
 #include <QMessageBox>
 #include <QMouseEvent>
+#include <QObject>
+#include <QPluginLoader>
 #include <QRubberBand>
+#include <QScrollArea>
 #include <QString>
 #include <QStyleFactory>
+#include <QTimer>
 #include <QToolBar>
 #include <QTranslator>
 #include <QTreeView>
-#include <QHBoxLayout>
-#include <QObject>
 
 #endif // UNIVERSAL_INCLUDE_H
