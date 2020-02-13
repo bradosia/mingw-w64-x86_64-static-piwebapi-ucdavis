@@ -26,9 +26,9 @@ void loadPlugins() {
 
       boost::filesystem::path lib_path(p.path().string().c_str());
       std::cout << "PLUGIN: Loading " << p.path() << "\n";
-      boost::shared_ptr<WidgetInterface> plugin;
+      boost::shared_ptr<UCDPWAB_pluginInterface> plugin;
       try {
-        plugin = boost::dll::import<WidgetInterface>(
+        plugin = boost::dll::import<UCDPWAB_pluginInterface>(
             lib_path, "plugin", boost::dll::load_mode::default_mode);
       } catch (...) {
         std::cout << "PLUGIN: Loading FAILED " << p.path() << "\n";

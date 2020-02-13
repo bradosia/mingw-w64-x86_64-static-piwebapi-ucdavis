@@ -28,38 +28,39 @@
  */
 namespace UCDPWAB {
 
-class UCD_OSI_Data : public WidgetInterface {
+class PluginInterface : public UCDPWAB_pluginInterface {
 
 public:
-  UCD_OSI_Data(QWidget *parent = nullptr) {}
-  ~UCD_OSI_Data(){};
+  PluginInterface(QWidget *parent = nullptr) {}
+  ~PluginInterface(){};
 
   void init() { printf("GREETINGS FROM DLL\n"); }
   std::shared_ptr<QWidget> getWidget() {
     std::shared_ptr<QWidget> widget = std::dynamic_pointer_cast<QWidget>(std::make_shared<MainWidget>());
     return widget;
   }
+  /* Makes an HTTPS GET request to the URI
+   * @param URI The address
+   */
+  rapidjson::Document httpsGetJSON(std::string URI);
+  std::string JSON_Format(rapidjson::Document JSON_Doc);
+  void printJSON_value(const rapidjson::Value &a, unsigned int depth);
+  void printJSON_iterator(rapidjson::Value::ConstMemberIterator &itr,
+                          unsigned int depth);
+  void getSettingsFile(std::string settingsFileString,
+                       std::string &inputURIString,
+                       std::string &outputFileString);
 };
 
 /* Writes data from HTTP request into a string buffer
  * @param ptr data address
  */
 size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s);
-/* Makes an HTTPS GET request to the URI
- * @param URI The address
- */
-rapidjson::Document HTTPS_GET_JSON(std::string URI);
-void printJSON_value(const rapidjson::Value &a, unsigned int depth);
-void printJSON_iterator(rapidjson::Value::ConstMemberIterator &itr,
-                        unsigned int depth);
-void getSettingsFile(std::string settingsFileString,
-                     std::string &inputURIString,
-                     std::string &outputFileString);
 
 // Exporting `my_namespace::plugin` variable with alias name `plugin`
 // (Has the same effect as `BOOST_DLL_ALIAS(my_namespace::plugin, plugin)`)
-extern "C" BOOST_SYMBOL_EXPORT UCD_OSI_Data plugin;
-UCD_OSI_Data plugin;
+extern "C" BOOST_SYMBOL_EXPORT PluginInterface plugin;
+PluginInterface plugin;
 
 } // namespace UCDPWAB
 

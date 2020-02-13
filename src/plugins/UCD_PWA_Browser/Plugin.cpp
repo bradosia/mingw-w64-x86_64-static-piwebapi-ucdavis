@@ -24,12 +24,13 @@
  */
 namespace UCDPWAB {
 
-size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s) {
+size_t writefunc(void *ptr, size_t size, size_t nmemb,
+                                  std::string *s) {
   s->append((char *)ptr, size * nmemb);
   return size * nmemb;
 }
 
-rapidjson::Document HTTPS_GET_JSON(std::string URI) {
+rapidjson::Document PluginInterface::httpsGetJSON(std::string URI) {
   CURL *curl;
   CURLcode res;
   std::string bufferString;
@@ -103,7 +104,8 @@ rapidjson::Document HTTPS_GET_JSON(std::string URI) {
   return resJSON_Doc;
 }
 
-void printJSON_value(const rapidjson::Value &a, unsigned int depth) {
+void PluginInterface::printJSON_value(const rapidjson::Value &a,
+                                      unsigned int depth) {
   if (a.IsArray()) {
     rapidjson::SizeType n =
         a.Size(); // rapidjson uses SizeType instead of size_t.
@@ -119,8 +121,8 @@ void printJSON_value(const rapidjson::Value &a, unsigned int depth) {
   }
 }
 
-void printJSON_iterator(rapidjson::Value::ConstMemberIterator &itr,
-                        unsigned int depth) {
+void PluginInterface::printJSON_iterator(
+    rapidjson::Value::ConstMemberIterator &itr, unsigned int depth) {
   static const char *kTypeNames[] = {"Null",  "False",  "True",  "Object",
                                      "Array", "String", "Number"};
   printf("Type of member %s is %s\n", itr->name.GetString(),
@@ -137,9 +139,9 @@ void printJSON_iterator(rapidjson::Value::ConstMemberIterator &itr,
   }
 }
 
-void getSettingsFile(std::string settingsFileString,
-                     std::string &inputURIString,
-                     std::string &outputFileString) {
+void PluginInterface::getSettingsFile(std::string settingsFileString,
+                                      std::string &inputURIString,
+                                      std::string &outputFileString) {
   // Check if inputFile exists
   {
     std::fstream inputFile;
