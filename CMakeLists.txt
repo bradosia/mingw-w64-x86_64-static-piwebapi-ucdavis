@@ -15,7 +15,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(QTDIR $ENV{QTDIR})
 
-set(CMAKE_PREFIX_PATH ${QTDIR})
+# set(CMAKE_PREFIX_PATH ${QTDIR})
 # set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -119,6 +119,4 @@ elseif(APPLE)
     RESOURCE "${RESOURCES}"
   )
 endif()
-
-# Installation Directories
 
