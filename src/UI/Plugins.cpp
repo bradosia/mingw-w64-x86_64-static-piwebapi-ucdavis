@@ -17,23 +17,27 @@
 namespace UCDPWAB {
 
 void loadPlugins() {
-  const auto staticInstances = QPluginLoader::staticInstances();
-  // for (QObject *plugin : staticInstances)
-  //    populateMenus(plugin);
 
   for (auto &p : std::filesystem::recursive_directory_iterator("plugins")) {
-    std::cout << p.path() << "\n";
+    std::cout << "PLUGIN: Found " << p.path() << "\n";
     if (p.is_regular_file() &&
         (p.path().extension() == ".dll" || p.path().extension() == ".dylib" ||
          p.path().extension() == ".so")) {
-      std::cout << p.path() << " is libsh \n";
-      QPluginLoader loader(QString(p.path().string().c_str()));
-      QObject *plugin = loader.instance();
+
+      boost::filesystem::path lib_path(p.path().string().c_str());
+      std::cout << "PLUGIN: Loading " << p.path() << "\n";
+      boost::shared_ptr<WidgetInterface> plugin;
+      try {
+        plugin = boost::dll::import<WidgetInterface>(
+            lib_path, "plugin", boost::dll::load_mode::default_mode);
+      } catch (...) {
+        std::cout << "PLUGIN: Loading FAILED " << p.path() << "\n";
+      }
       if (plugin) {
-        auto iWidget = qobject_cast<QWidget *>(plugin);
-        if (iWidget) {
-          std::cout << p.path() << " is widget \n";
-        }
+        std::cout << "PLUGIN: Loading SUCCESS " << p.path() << "\n";
+        plugin->init();
+        std::shared_ptr<QWidget> widget = plugin->getWidget();
+        std::cout << "PLUGIN: widget " << widget->objectName().toStdString() << "\n";
       }
     }
   }

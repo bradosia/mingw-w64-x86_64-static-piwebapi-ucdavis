@@ -19,6 +19,7 @@
 #include "universalInclude.hpp"
 
 // local project
+#include "Interface.hpp"
 #include "Plugins.hpp"
 
 class MainWindow : public QMainWindow {

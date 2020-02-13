@@ -25,6 +25,9 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET "10.10")
 
 find_package(Qt5Widgets REQUIRED)
 
+find_package(Boost 1.56 REQUIRED COMPONENTS
+             system filesystem)
+
 include_directories(
   third_party
   third_party/hjson/include
@@ -53,6 +56,7 @@ set(SOURCES ${SOURCES}
   src/UI/MainWindow.hpp
   src/UI/universalInclude.hpp
   src/UI/Plugins.hpp
+  src/UI/Interface.hpp
   src/core/config.hpp
 )
 
@@ -68,6 +72,10 @@ add_executable(${EXENAME} ${SOURCES} ${RESOURCES})
 target_link_libraries(${EXENAME} PRIVATE
   # QT5
   Qt5::Widgets
+
+  # Boost
+  Boost::system
+  Boost::filesystem
 
   # HJSON for loading settings files
   hjson

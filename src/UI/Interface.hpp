@@ -9,23 +9,29 @@
  * Icons and images owned by their respective owners
  */
 
-#ifndef UCDPWAB_PLUGINS_H
-#define UCDPWAB_PLUGINS_H
+#ifndef UCDPWAB_INTERFACE_H
+#define UCDPWAB_INTERFACE_H
 
-// Universal Include
-#include "universalInclude.hpp"
+// c++17
+#include <memory>
 
-// local project
-#include "Interface.hpp"
+/* QT 5.13.2-1
+ * License: LGPLv3
+ */
+#include <QWidget>
 
 /*
  * UCDPWAB = UC Davis PI Web API Browser
  */
 namespace UCDPWAB {
 
-void loadPlugins();
+class WidgetInterface {
+public:
+    virtual void init() = 0;
+    virtual std::shared_ptr<QWidget> getWidget() = 0;
+};
 
 } // namespace UCDPWAB
 
 #endif
-// end UCDPWAB_PLUGINS_H
+// end UCDPWAB_INTERFACE_H

@@ -20,39 +20,22 @@
 // Universal Include
 #include "universalInclude.hpp"
 
-#include "../../UI/Plugins.hpp"
-
 /*
- * UCD3DEM = UC Davis 3D Electricity Map
+ * UCDPWAB = UC Davis PI Web API Browser
  */
-namespace UCD3DEM {
+namespace UCDPWAB {
 
-class UCD_OSI_Data : public WidgetInterface {
+class MainWidget : public QWidget {
   Q_OBJECT
-  Q_INTERFACES(WidgetInterface)
 
 public:
-  UCD_OSI_Data(QWidget *parent) {}
-  ~UCD_OSI_Data(){};
+  MainWidget(){
+      this->setObjectName("hello widget");
+  };
+  ~MainWidget(){};
 };
 
-/* Writes data from HTTP request into a string buffer
- * @param ptr data address
- */
-size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s);
-/* Makes an HTTPS GET request to the URI
- * @param URI The address
- */
-rapidjson::Document HTTPS_GET_JSON(std::string URI);
-void printJSON_value(const rapidjson::Value &a, unsigned int depth);
-void printJSON_iterator(rapidjson::Value::ConstMemberIterator &itr,
-                        unsigned int depth);
-void getSettingsFile(std::string settingsFileString,
-                     std::string &inputURIString,
-                     std::string &outputFileString);
-//void init() { printf("hiii"); }
-
-} // namespace UCD3DEM
+} // namespace UCDPWAB
 
 #endif
 // end UCD_OSI_DATA_MAIN_WIDGET_H

@@ -32,6 +32,10 @@
 #include <stdlib.h> /* srand, rand */
 #include <string.h>
 
+/* Boost
+ */
+#include <boost/config.hpp> // for BOOST_SYMBOL_EXPORT
+
 /*
  * CURL 7.68.0
  * License: MIT/X inspired

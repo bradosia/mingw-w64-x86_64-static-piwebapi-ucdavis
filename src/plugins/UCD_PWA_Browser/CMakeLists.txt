@@ -7,10 +7,12 @@ set(libIncludeSubdir UCD_OSI_Data)
 
 # Set up source files
 set(SOURCES
+  Plugin.cpp
   MainWidget.cpp
 )
 
 set(HEADERS
+  Plugin.hpp
   MainWidget.hpp
   universalInclude.hpp
 )
