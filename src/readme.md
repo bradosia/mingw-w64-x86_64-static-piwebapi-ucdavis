@@ -1,9 +1,24 @@
-# Source Code
-The UI directory contains anything that mentions or uses any part of QT or User Interface libraries. 
-The theory is that presentation should be separated from logic. 
+# Source Code Organization
+* /UI/ directory contains anything that mentions or uses any part of QT or User Interface libraries.
+* /core/ directory includes non-QT logic
 
-The core directory should include logic
+The general idea is that presentation should be separated from logic, but QT empasses many feature beyond the UI. In case QT falls out of popularity in the future, all source files containing an QT Objects will be placed in /UI/ even if it is logic using a QT library.
 
 # Plugins
-Boost is used for loading the dynamic libraries. QT also includes a plugin manager, but that won't be
-used to reduce dependence on the QT system.
+Plugins are compiled as shared libraries and are loaded using an interface specifying header and boost::dll as the shared library loader. QT also includes a plugin manager, but boost::dll is used instead to reduce dependency on boost in case another User Interface library is used or considered.
+
+# Dependencies
+
+These are the features and the library that is used to implement them. QT probably contains most of these libraries, but use of QT for anything other than UI will be discouraged.
+
+| Feature       | QT           | Other  |
+|: ------------- |:------------- |:----- |
+| User Interface      | User Interface Compiler (UIC) |  |
+| Slots & Signals      | Meta-Object Compiler (MOC) |  |
+| Embedded Resources | Resource Compiler (RCC) | |
+| Plugins | | boost::dll |
+| Networking | | curl OR boost::beast |
+| SQL Database Connector | | MariaDB Connector (Works with mySQL) |
+| JSON | | RapidJSON |
+| Configuration Files | | Hjson |
+| XML | | | 
