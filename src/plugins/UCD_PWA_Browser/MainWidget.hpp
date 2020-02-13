@@ -30,7 +30,7 @@ class MainWidget : public QWidget {
 
 public:
   MainWidget(){
-      this->setObjectName("hello widget");
+      this->setObjectName("UC Davis PI Web API Browser Widget");
   };
   ~MainWidget(){};
 };
