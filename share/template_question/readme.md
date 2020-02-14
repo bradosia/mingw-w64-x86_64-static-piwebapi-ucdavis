@@ -39,39 +39,62 @@ PluginManager.hpp
 ```cpp
 #include <boost/dll/import.hpp>
 
+class InterfaceMethodsBase {
+public:
+  std::string pluginName;
+  InterfaceMethodsBase(std::string s) { pluginName = s; }
+  ~InterfaceMethodsBase() {}
+  virtual void addPath(std::filesystem::path p) = 0;
+};
+
+template <class T> class InterfaceMethods : public InterfaceMethodsBase {
+public:
+  std::vector<boost::shared_ptr<T>> pluginPtrs;
+  void addPath(std::filesystem::path p) {
+    boost::filesystem::path lib_path(p.string().c_str());
+    std::cout << "PLUGIN: Loading " << p << "\n";
+    boost::shared_ptr<T> plugin;
+    try {
+      plugin = boost::dll::import<T>(lib_path, pluginName,
+                                     boost::dll::load_mode::default_mode);
+    } catch (...) {
+      std::cout << "PLUGIN: Loading FAILED " << p << "\n";
+    }
+    if (plugin) {
+      std::cout << "PLUGIN: Loading SUCCESS " << p << "\n";
+      pluginPtrs.push_back(plugin);
+    }
+  }
+};
+
 class PluginManager {
 private:
-    std::unordered_map<std::string, void*> pluginMap;
+  std::unordered_map<std::string, InterfaceMethodsBase *> interfaceMap;
+
 public:
   template <class T> void addPluginInterface(std::string pluginName) {
-    // somehow create make loadPlugins() and getPlugin() aware of class T
+    InterfaceMethods<T> *interface = new InterfaceMethods<T>(pluginName);
+    InterfaceMethodsBase *interfaceBase = (InterfaceMethodsBase *)interface;
+    interfaceMap.insert({pluginName, interface});
   }
 
-  void PluginManager::loadPlugins(std::string directoryPathStr) {
+  void loadPlugins(std::string directoryPathStr) {
     for (auto &p :
          std::filesystem::recursive_directory_iterator(directoryPathStr)) {
       std::cout << "PLUGIN: File Found " << p.path() << "\n";
       if (p.is_regular_file() &&
           (p.path().extension() == ".dll" || p.path().extension() == ".dylib" ||
            p.path().extension() == ".so")) {
-        boost::filesystem::path lib_path(p.path().string().c_str());
-        std::cout << "PLUGIN: Loading " << p.path() << "\n";
-        boost::shared_ptr<T> plugin;
-        try {
-          plugin = boost::dll::import<T>(lib_path, pluginName, boost::dll::load_mode::default_mode);
-        } catch (...) {
-          std::cout << "PLUGIN: Loading FAILED " << p.path() << "\n";
-        }
-        if (plugin) {
-          std::cout << "PLUGIN: Loading SUCCESS " << p.path() << "\n";
-          pluginMap.insert({pluginName,plugin})
+        for (auto pairs : interfaceMap) {
+          pairs.second->addPath(p.path());
         }
       }
     }
   }
 
-  std::shared_ptr<T> getPlugin(std::string pluginName) {
-    // somehow return the stored class T instance of the pluginName
+  template <class T> std::shared_ptr<T> getPlugin(std::string pluginName) {
+    InterfaceMethods<T> *interface = interfaceMap.at(pluginName);
+    return interface->pluginPtrs.top();
   }
 };
 ```
@@ -85,7 +108,7 @@ int main(){
   PluginManager pluginManagerObj;
   pluginManagerObj.addPluginInterface<PluginInterface>("pluginName");
   pluginManagerObj.loadPlugins("plugins_directory");
-  std::shared_ptr<PluginInterface> plugin = pluginManagerObj.getPlugin("pluginName");
+  std::shared_ptr<PluginInterface> plugin = pluginManagerObj.getPlugin<PluginInterface>("pluginName");
   plugin->testPlugin();
 }
 ```
