@@ -35,9 +35,6 @@ PluginClass pluginName;
 ```
 
 PluginManager.hpp
-```cpp
-#include <boost/dll/import.hpp>
-
 class InterfaceMethodsBase {
 public:
   std::string pluginName;
@@ -94,7 +91,11 @@ public:
   }
 
   template <class T> boost::shared_ptr<T> getPlugin(std::string pluginName) {
-    InterfaceMethods<T> *interface = dynamic_cast<InterfaceMethods<T> *>(interfaceMap.at(pluginName));
+    InterfaceMethods<T> *interface =
+        dynamic_cast<InterfaceMethods<T> *>(interfaceMap.at(pluginName));
+    if (interface->pluginPtrs.empty()) {
+      return nullptr;
+    }
     return interface->pluginPtrs.front();
   }
 };
@@ -115,3 +116,11 @@ int main(){
 ```
 
 EDIT: I'm using MinGW compiler on windows
+
+# Answer 
+
+My original intent was to find some way for the method `loadPlugins()` to intelligently find and load all plugins in a directory and store their handles for later use.
+
+After asking the initial question and messing around with possible solutions, I found out I could use templates to create class `InterfaceMethods` that inherits `InterfaceMethodsBase` that would handle the recognition of a single interface type and store all the class instances in a hash table of type `InterfaceMethodsBase`. After calling `loadPlugins()`, I could retrieve the discovered plugins from the hash table.
+
+I edited the working code back into the original post. I hope someone can benefit from this solution in the future.
