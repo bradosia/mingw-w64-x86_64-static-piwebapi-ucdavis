@@ -35,6 +35,7 @@ PluginClass pluginName;
 ```
 
 PluginManager.hpp
+```cpp
 class InterfaceMethodsBase {
 public:
   std::string pluginName;
