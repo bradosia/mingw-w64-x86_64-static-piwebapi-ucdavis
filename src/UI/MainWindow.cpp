@@ -17,14 +17,20 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   ui.setupUi(this);
   /* Plugins
    */
-  UCDPWAB::PluginManager pluginManagerObj;
-  pluginManagerObj.addPluginInterface<UCDPWAB::UCDPWAB_pluginInterface>("plugin");
+  bradosia::PluginManager pluginManagerObj;
+  pluginManagerObj.addPluginInterface<UCDPWAB::PluginInterface>("plugin");
   pluginManagerObj.loadPlugins("plugins");
-  std::shared_ptr<UCDPWAB::UCDPWAB_pluginInterface> UCDPWAB_plugin = pluginManagerObj.getPlugin("plugin");
+  std::shared_ptr<UCDPWAB::PluginInterface> UCDPWAB_plugin =
+      pluginManagerObj.getPlugin<UCDPWAB::PluginInterface>("plugin");
+  if (UCDPWAB_plugin) {
+    printf("PLUGIN FOUND\n");
+    UCDPWAB_plugin->init();
+    std::shared_ptr<QWidget> widget = UCDPWAB_plugin->getWidget();
+  }
 
   // why does setObjectName() not seem to change the name
   this->setObjectName("testName");
-  //UCD_PWA_Data_Widget = std::make_unique<UCD_PWA_Data>(this);
+  // UCD_PWA_Data_Widget = std::make_unique<UCD_PWA_Data>(this);
 
   /* find the layout in the centralWidget
    * add the plugin widgets to the layout
@@ -36,19 +42,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   if (!widgetCentralWidgetList.empty()) {
     printf("===== DEBUG: CENTRAL FOUND =====\n");
     QHBoxLayout *layout = widgetCentralWidgetList.at(0);
-    //layout->addWidget(UCD_PWA_Data_Widget.get());
+    // layout->addWidget(UCD_PWA_Data_Widget.get());
   }
 
   // initialize the plugin
-  //UCD_PWA_Data_Widget->init();
+  // UCD_PWA_Data_Widget->init();
 
   // Open resource file
-    QFile file(":menu/default.txt");
-    file.open(QIODevice::ReadOnly);
-    // Add to Tree
-    //UCD_PWA_Data_Widget->treeSetPlainText(file.readAll());
-    // Close file
-    file.close();
+  QFile file(":menu/default.txt");
+  file.open(QIODevice::ReadOnly);
+  // Add to Tree
+  // UCD_PWA_Data_Widget->treeSetPlainText(file.readAll());
+  // Close file
+  file.close();
 }
 
 void MainWindow::on_actionEnergy_triggered() {
@@ -119,18 +125,14 @@ void MainWindow::on_actionWiFi_triggered() {
        rapidjson::PrettyWriter< rapidjson::OStreamWrapper> writer2 { osw };
       resJSON_Doc.Accept( writer2 );
       */
-
 }
 
-void MainWindow::on_actionTemperature_triggered()
-{
-    // Open resource file
-    QFile file(":menu/default.txt");
-    file.open(QIODevice::ReadOnly);
-    // Add to Tree
-    //UCD_PWA_Data_Widget->treeAddPlainText(file.readAll());
-    // Close file
-    file.close();
+void MainWindow::on_actionTemperature_triggered() {
+  // Open resource file
+  QFile file(":menu/default.txt");
+  file.open(QIODevice::ReadOnly);
+  // Add to Tree
+  // UCD_PWA_Data_Widget->treeAddPlainText(file.readAll());
+  // Close file
+  file.close();
 }
-
-

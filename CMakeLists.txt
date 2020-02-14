@@ -50,13 +50,12 @@ set(SOURCES ${SOURCES}
   src/UI/main.cpp
   src/UI/Application.cpp
   src/UI/MainWindow.cpp
-  src/UI/Plugins.cpp
 
   src/UI/Application.hpp
   src/UI/MainWindow.hpp
   src/UI/universalInclude.hpp
-  src/UI/Plugins.hpp
   src/UI/Interface.hpp
+  src/core/PluginManager.hpp
   src/core/config.hpp
 )
 

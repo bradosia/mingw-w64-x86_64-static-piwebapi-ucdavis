@@ -34,10 +34,6 @@
 #include <stdlib.h> /* srand, rand */
 #include <string.h>
 
-/* boost
- */
-#include <boost/dll/import.hpp> // for import_alias
-
 /* hjson-cpp 1.4
  * License: MIT
  */

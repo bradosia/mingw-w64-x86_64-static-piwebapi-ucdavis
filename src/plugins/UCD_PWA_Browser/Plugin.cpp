@@ -30,7 +30,7 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb,
   return size * nmemb;
 }
 
-rapidjson::Document PluginInterface::httpsGetJSON(std::string URI) {
+rapidjson::Document PluginImplement::httpsGetJSON(std::string URI) {
   CURL *curl;
   CURLcode res;
   std::string bufferString;
@@ -104,7 +104,7 @@ rapidjson::Document PluginInterface::httpsGetJSON(std::string URI) {
   return resJSON_Doc;
 }
 
-void PluginInterface::printJSON_value(const rapidjson::Value &a,
+void PluginImplement::printJSON_value(const rapidjson::Value &a,
                                       unsigned int depth) {
   if (a.IsArray()) {
     rapidjson::SizeType n =
@@ -121,7 +121,7 @@ void PluginInterface::printJSON_value(const rapidjson::Value &a,
   }
 }
 
-void PluginInterface::printJSON_iterator(
+void PluginImplement::printJSON_iterator(
     rapidjson::Value::ConstMemberIterator &itr, unsigned int depth) {
   static const char *kTypeNames[] = {"Null",  "False",  "True",  "Object",
                                      "Array", "String", "Number"};
@@ -139,7 +139,7 @@ void PluginInterface::printJSON_iterator(
   }
 }
 
-void PluginInterface::getSettingsFile(std::string settingsFileString,
+void PluginImplement::getSettingsFile(std::string settingsFileString,
                                       std::string &inputURIString,
                                       std::string &outputFileString) {
   // Check if inputFile exists

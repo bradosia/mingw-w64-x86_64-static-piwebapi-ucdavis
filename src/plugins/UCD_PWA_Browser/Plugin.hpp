@@ -28,11 +28,11 @@
  */
 namespace UCDPWAB {
 
-class PluginInterface : public UCDPWAB_pluginInterface {
+class PluginImplement : public PluginInterface {
 
 public:
-  PluginInterface(QWidget *parent = nullptr) {}
-  ~PluginInterface(){};
+  PluginImplement(QWidget *parent = nullptr) {}
+  ~PluginImplement(){};
 
   void init() { printf("GREETINGS FROM DLL\n"); }
   std::shared_ptr<QWidget> getWidget() {
@@ -59,8 +59,8 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s);
 
 // Exporting `my_namespace::plugin` variable with alias name `plugin`
 // (Has the same effect as `BOOST_DLL_ALIAS(my_namespace::plugin, plugin)`)
-extern "C" BOOST_SYMBOL_EXPORT PluginInterface plugin;
-PluginInterface plugin;
+extern "C" BOOST_SYMBOL_EXPORT PluginImplement plugin;
+PluginImplement plugin;
 
 } // namespace UCDPWAB
 

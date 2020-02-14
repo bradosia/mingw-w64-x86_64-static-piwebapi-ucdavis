@@ -20,7 +20,7 @@
 
 // local project
 #include "Interface.hpp"
-#include "Plugins.hpp"
+#include "../core/PluginManager.hpp"
 
 class MainWindow : public QMainWindow {
   Q_OBJECT

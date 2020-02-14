@@ -25,7 +25,7 @@
  */
 namespace UCDPWAB {
 
-class UCDPWAB_pluginInterface {
+class PluginInterface {
 public:
     virtual void init() = 0;
     virtual std::shared_ptr<QWidget> getWidget() = 0;
