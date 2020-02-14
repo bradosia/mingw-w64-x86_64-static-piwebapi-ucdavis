@@ -25,6 +25,13 @@ namespace UCDPWAB {
 
 void loadPlugins();
 
+class PluginManager {
+public:
+  template <class T, std::string S> void addPluginInterface(std::string interfaceName) {
+
+  }
+};
+
 } // namespace UCDPWAB
 
 #endif
