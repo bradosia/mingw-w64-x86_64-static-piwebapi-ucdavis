@@ -113,3 +113,5 @@ int main(){
   plugin->testPlugin();
 }
 ```
+
+EDIT: I'm using MinGW compiler on windows
