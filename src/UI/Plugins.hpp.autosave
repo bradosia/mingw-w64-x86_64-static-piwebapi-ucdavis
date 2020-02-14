@@ -33,7 +33,7 @@ public:
       std::cout << "PLUGIN: Loading FAILED " << p << "\n";
     }
   }
-  void loadPlugins();
+  void loadPlugins(std::string directoryPathStr);
 };
 
 } // namespace UCDPWAB

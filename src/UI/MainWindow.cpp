@@ -17,7 +17,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   ui.setupUi(this);
   /* Plugins
    */
-  UCDPWAB::loadPlugins();
+  UCDPWAB::PluginManager pluginManagerObj;
+  pluginManagerObj.addPluginInterface<UCDPWAB::UCDPWAB_pluginInterface>("plugin");
+  pluginManagerObj.loadPlugins("plugins");
+  std::shared_ptr<UCDPWAB::UCDPWAB_pluginInterface> UCDPWAB_plugin = pluginManagerObj.getPlugin("plugin");
+
   // why does setObjectName() not seem to change the name
   this->setObjectName("testName");
   //UCD_PWA_Data_Widget = std::make_unique<UCD_PWA_Data>(this);
