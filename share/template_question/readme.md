@@ -49,6 +49,8 @@ public:
 
 template <class T> class InterfaceMethods : public InterfaceMethodsBase {
 public:
+  InterfaceMethods(std::string s) : InterfaceMethodsBase(s) {}
+  ~InterfaceMethods() {}
   std::vector<boost::shared_ptr<T>> pluginPtrs;
   void addPath(std::filesystem::path p) {
     boost::filesystem::path lib_path(p.string().c_str());
@@ -92,9 +94,9 @@ public:
     }
   }
 
-  template <class T> std::shared_ptr<T> getPlugin(std::string pluginName) {
-    InterfaceMethods<T> *interface = interfaceMap.at(pluginName);
-    return interface->pluginPtrs.top();
+  template <class T> boost::shared_ptr<T> getPlugin(std::string pluginName) {
+    InterfaceMethods<T> *interface = dynamic_cast<InterfaceMethods<T> *>(interfaceMap.at(pluginName));
+    return interface->pluginPtrs.front();
   }
 };
 ```
@@ -108,7 +110,7 @@ int main(){
   PluginManager pluginManagerObj;
   pluginManagerObj.addPluginInterface<PluginInterface>("pluginName");
   pluginManagerObj.loadPlugins("plugins_directory");
-  std::shared_ptr<PluginInterface> plugin = pluginManagerObj.getPlugin<PluginInterface>("pluginName");
+  boost::shared_ptr<PluginInterface> plugin = pluginManagerObj.getPlugin<PluginInterface>("pluginName");
   plugin->testPlugin();
 }
 ```
