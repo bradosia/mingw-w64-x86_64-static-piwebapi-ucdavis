@@ -29,49 +29,45 @@ PluginClass pluginName;
 }
 ```
 
+THIS CODE IS INCORRECT, but I am trying to make some attempt to show what I'm trying to do except I'm not sure where to start on the template syntax:
 PluginManager.hpp
 ```cpp
 #include <boost/dll/import.hpp>
 
 class PluginManager {
+private:
+    std::unordered_map<std::string, void*> pluginMap;
 public:
-  template <class T, char *str> void addPluginInterface() {
-    std::filesystem::path p("lol");
-    boost::filesystem::path lib_path(p.string().c_str());
-    boost::shared_ptr<T> plugin;
-    try {
-      plugin = boost::dll::import<T>(lib_path, str,
-                                     boost::dll::load_mode::default_mode);
-    } catch (...) {
-      std::cout << "PLUGIN: Loading FAILED " << p << "\n";
-    }
+  template <class T> void addPluginInterface(std::string pluginName) {
+    // somehow create make loadPlugins() and getPlugin() aware of class T
   }
-  
-  void PluginManager::loadPlugins(std::string directoryPathStr) {
-  for (auto &p : std::filesystem::recursive_directory_iterator(directoryPathStr)) {
-    std::cout << "PLUGIN: Found " << p.path() << "\n";
-    if (p.is_regular_file() &&
-        (p.path().extension() == ".dll" || p.path().extension() == ".dylib" ||
-         p.path().extension() == ".so")) {
 
-      boost::filesystem::path lib_path(p.path().string().c_str());
-      std::cout << "PLUGIN: Loading " << p.path() << "\n";
-      boost::shared_ptr<UCDPWAB_pluginInterface> plugin;
-      try {
-        plugin = boost::dll::import<UCDPWAB_pluginInterface>(
-            lib_path, "plugin", boost::dll::load_mode::default_mode);
-      } catch (...) {
-        std::cout << "PLUGIN: Loading FAILED " << p.path() << "\n";
-      }
-      if (plugin) {
-        std::cout << "PLUGIN: Loading SUCCESS " << p.path() << "\n";
-        plugin->init();
-        std::shared_ptr<QWidget> widget = plugin->getWidget();
-        std::cout << "PLUGIN: widget " << widget->objectName().toStdString() << "\n";
+  void PluginManager::loadPlugins(std::string directoryPathStr) {
+    for (auto &p :
+         std::filesystem::recursive_directory_iterator(directoryPathStr)) {
+      std::cout << "PLUGIN: File Found " << p.path() << "\n";
+      if (p.is_regular_file() &&
+          (p.path().extension() == ".dll" || p.path().extension() == ".dylib" ||
+           p.path().extension() == ".so")) {
+        boost::filesystem::path lib_path(p.path().string().c_str());
+        std::cout << "PLUGIN: Loading " << p.path() << "\n";
+        boost::shared_ptr<T> plugin;
+        try {
+          plugin = boost::dll::import<T>(lib_path, pluginName, boost::dll::load_mode::default_mode);
+        } catch (...) {
+          std::cout << "PLUGIN: Loading FAILED " << p.path() << "\n";
+        }
+        if (plugin) {
+          std::cout << "PLUGIN: Loading SUCCESS " << p.path() << "\n";
+          pluginMap.insert({pluginName,plugin})
+        }
       }
     }
   }
-}
+
+  std::shared_ptr<T> getPlugin(std::string pluginName) {
+    // somehow return the stored class T instance of the pluginName
+  }
 };
 ```
 
