@@ -5,7 +5,7 @@ https://stackoverflow.com/questions/60220913/c-storing-plugin-interfaces
 
 I'm trying to create a plugin manager for c++ that checks a directory for shared libraries (dll,so,dylib) and checks if there is a plugin interface available to store the plugin and retrieve it later with.
 
-I'm using boost::dll to import the dll, but I don't know how to set up the template so I can make the code in main.cpp work.
+I'm using boost::dll to import the dll, but I don't know how to set up the template better.
 
 How do I use templates or some other method to add plugin interfaces to the plugin manager so it will check the shared libraries for the export alias name and store the shared library handle?
 
@@ -34,7 +34,6 @@ PluginClass pluginName;
 }
 ```
 
-THIS CODE IS INCORRECT, but I am trying to make some attempt to show what I'm trying to do except I'm not sure where to start on the template syntax:
 PluginManager.hpp
 ```cpp
 #include <boost/dll/import.hpp>
