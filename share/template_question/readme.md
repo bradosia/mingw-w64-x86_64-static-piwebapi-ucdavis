@@ -1,3 +1,8 @@
+# Stackoverflow
+https://stackoverflow.com/questions/60220913/c-storing-plugin-interfaces
+
+# Post
+
 I'm trying to create a plugin manager for c++ that checks a directory for shared libraries (dll,so,dylib) and checks if there is a plugin interface available to store the plugin and retrieve it later with.
 
 I'm using boost::dll to import the dll, but I don't know how to set up the template so I can make the code in main.cpp work.
