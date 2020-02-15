@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>main</class>
- <widget class="QMainWindow" name="MainWindow">
+ <widget class="QMainWindow" name="main">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -10,30 +10,26 @@
     <height>600</height>
    </rect>
   </property>
-
   <property name="windowTitle">
    <string>UC Davis PI Web API Browser</string>
   </property>
-   <property name="windowIcon">
-   <iconset>
-    <normaloff>:icons_utility/003-light bulb.svg</normaloff>:icons_utility/003-light bulb.svg</iconset>
+  <property name="windowIcon">
+   <iconset resource="../../resources/icons_utility.qrc">
+    <normaloff>:/icons/utility/003-light bulb.svg</normaloff>:/icons/utility/003-light bulb.svg</iconset>
   </property>
-
   <widget class="QWidget" name="centralwidget">
    <property name="acceptDrops">
     <bool>false</bool>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <property name="sizeConstraint">
-       <enum>QLayout::SetMaximumSize</enum>
-      </property>
-     </layout>
-     </widget>
-
-     
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="sizeConstraint">
+     <enum>QLayout::SetMaximumSize</enum>
+    </property>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -63,7 +59,7 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionEnergy">
    <property name="icon">
-    <iconset resource="../resources/icons_utility.qrc">
+    <iconset resource="../../resources/icons_utility.qrc">
      <normaloff>:/icons/utility/003-light bulb.svg</normaloff>:/icons/utility/003-light bulb.svg</iconset>
    </property>
    <property name="text">
@@ -75,7 +71,7 @@
   </action>
   <action name="actionWater">
    <property name="icon">
-    <iconset resource="../resources/icons_utility.qrc">
+    <iconset resource="../../resources/icons_utility.qrc">
      <normaloff>:/icons/utility/014-faucet.svg</normaloff>:/icons/utility/014-faucet.svg</iconset>
    </property>
    <property name="text">
@@ -87,7 +83,7 @@
   </action>
   <action name="actionWiFi">
    <property name="icon">
-    <iconset resource="../resources/icons_utility.qrc">
+    <iconset resource="../../resources/icons_utility.qrc">
      <normaloff>:/icons/utility/009-modem.svg</normaloff>:/icons/utility/009-modem.svg</iconset>
    </property>
    <property name="text">
@@ -109,7 +105,7 @@
   </action>
   <action name="actionDiscover">
    <property name="icon">
-    <iconset resource="../resources/icons_utility.qrc">
+    <iconset resource="../../resources/icons_utility.qrc">
      <normaloff>:/icons/utility/017-house.svg</normaloff>:/icons/utility/017-house.svg</iconset>
    </property>
    <property name="text">
@@ -121,7 +117,7 @@
   </action>
   <action name="actionTemperature">
    <property name="icon">
-    <iconset resource="../resources/icons_utility.qrc">
+    <iconset resource="../../resources/icons_utility.qrc">
      <normaloff>:/icons/utility/005-thermometer.svg</normaloff>:/icons/utility/005-thermometer.svg</iconset>
    </property>
    <property name="text">

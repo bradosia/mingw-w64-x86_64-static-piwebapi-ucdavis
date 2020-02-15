@@ -14,7 +14,8 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   /* UI Setup
    */
-  ui.setupUi(this);
+  ui = std::make_unique<Ui::main>();
+  ui->setupUi(this);
   this->setObjectName("MainWindow");
 
   /* Plugins
@@ -43,12 +44,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
   /* Get settings
    */
-
-  Hjson::Value dat = Hjson::Unmarshal(sampleText.c_str(), sampleText.size());
+  std::string test1;
+  std::string test2;
+  bradosia::SettingsManager settingsManagerObj;
+  settingsManagerObj.getFile(SETTINGS_FILE, test1, test2);
 
   /* find the layout in the centralWidget
    * add the plugin widgets to the layout
    */
+
   printf("===== DEBUG: ATTEMPTING TO FIND CENTRAL... =====\n");
   QList<QHBoxLayout *> widgetCentralWidgetList =
       this->findChildren<QHBoxLayout *>("horizontalLayout",
@@ -57,7 +61,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     printf("===== DEBUG: CENTRAL FOUND =====\n");
     QHBoxLayout *layout = widgetCentralWidgetList.at(0);
     for (auto widgetPtr : central_QWidgetPtrs) {
-      layout->addWidget(widgetPtr.get());
+      //layout->addWidget(widgetPtr.get());
     }
   }
 }

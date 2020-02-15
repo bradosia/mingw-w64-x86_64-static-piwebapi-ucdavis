@@ -21,7 +21,7 @@
 // local project
 #include "Interface.hpp"
 #include "../core/PluginManager.hpp"
-#include "../core/Settings.hpp"
+#include "../core/SettingsManager.hpp"
 
 class MainWindow : public QMainWindow {
   Q_OBJECT
@@ -32,7 +32,7 @@ public:
 
 private:
   // ui
-  Ui::main ui;
+  std::unique_ptr<Ui::main> ui;
   std::shared_ptr<UCDPWAB::PluginInterface> UCDPWAB_plugin;
 
 private slots:
