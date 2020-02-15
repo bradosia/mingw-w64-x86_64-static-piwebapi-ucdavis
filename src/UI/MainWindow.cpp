@@ -15,22 +15,36 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   /* UI Setup
    */
   ui.setupUi(this);
+  this->setObjectName("MainWindow");
+
   /* Plugins
    */
   bradosia::PluginManager pluginManagerObj;
   pluginManagerObj.addPluginInterface<UCDPWAB::PluginInterface>("plugin");
   pluginManagerObj.loadPlugins("plugins");
-  std::shared_ptr<UCDPWAB::PluginInterface> UCDPWAB_plugin =
+  UCDPWAB_plugin =
       pluginManagerObj.getPlugin<UCDPWAB::PluginInterface>("plugin");
+  std::vector<std::shared_ptr<QWidget>> central_QWidgetPtrs;
   if (UCDPWAB_plugin) {
     printf("PLUGIN FOUND\n");
     UCDPWAB_plugin->init();
-    std::shared_ptr<QWidget> widget = UCDPWAB_plugin->getWidget();
+    std::shared_ptr<QWidget> UCDPWAB_Widget = UCDPWAB_plugin->getWidget();
+    central_QWidgetPtrs.push_back(UCDPWAB_Widget);
+
+    // Plain text tree start
+    // Open resource file
+    QFile file(":menu/default.txt");
+    file.open(QIODevice::ReadOnly);
+    // Add to Tree
+    UCDPWAB_plugin->treeSetPlainText(file.readAll());
+    // Close file
+    file.close();
   }
 
-  // why does setObjectName() not seem to change the name
-  this->setObjectName("testName");
-  // UCD_PWA_Data_Widget = std::make_unique<UCD_PWA_Data>(this);
+  /* Get settings
+   */
+
+  Hjson::Value dat = Hjson::Unmarshal(sampleText.c_str(), sampleText.size());
 
   /* find the layout in the centralWidget
    * add the plugin widgets to the layout
@@ -42,19 +56,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   if (!widgetCentralWidgetList.empty()) {
     printf("===== DEBUG: CENTRAL FOUND =====\n");
     QHBoxLayout *layout = widgetCentralWidgetList.at(0);
-    // layout->addWidget(UCD_PWA_Data_Widget.get());
+    for (auto widgetPtr : central_QWidgetPtrs) {
+      layout->addWidget(widgetPtr.get());
+    }
   }
-
-  // initialize the plugin
-  // UCD_PWA_Data_Widget->init();
-
-  // Open resource file
-  QFile file(":menu/default.txt");
-  file.open(QIODevice::ReadOnly);
-  // Add to Tree
-  // UCD_PWA_Data_Widget->treeSetPlainText(file.readAll());
-  // Close file
-  file.close();
 }
 
 void MainWindow::on_actionEnergy_triggered() {

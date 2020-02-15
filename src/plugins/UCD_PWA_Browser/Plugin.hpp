@@ -14,14 +14,16 @@
  * Icons and images owned by their respective owners
  */
 
-#ifndef UCD_OSI_DATA_PLUGIN_H
-#define UCD_OSI_DATA_PLUGIN_H
+#ifndef UCDPWAB_PLUGIN_H
+#define UCDPWAB_PLUGIN_H
 
 // Universal Include
 #include "universalInclude.hpp"
 
 #include "../../UI/Interface.hpp"
 #include "MainWidget.hpp"
+#include "TreeItem.hpp"
+#include "TreeModel.hpp"
 
 /*
  * UCDPWAB = UC Davis PI Web API Browser
@@ -29,16 +31,26 @@
 namespace UCDPWAB {
 
 class PluginImplement : public PluginInterface {
+private:
+  std::shared_ptr<TreeModel> treeModel;
+  std::shared_ptr<QTreeView> treeView;
 
 public:
-  PluginImplement(QWidget *parent = nullptr) {}
+  PluginImplement(QWidget *parent = nullptr) {
+    treeModel = std::make_shared<TreeModel>();
+    treeView = std::make_shared<QTreeView>();
+    treeView->setModel(treeModel.get());
+    treeView->expandAll();
+  }
   ~PluginImplement(){};
 
   void init() { printf("GREETINGS FROM DLL\n"); }
   std::shared_ptr<QWidget> getWidget() {
-    std::shared_ptr<QWidget> widget = std::dynamic_pointer_cast<QWidget>(std::make_shared<MainWidget>());
+    std::shared_ptr<QWidget> widget = treeView;
     return widget;
   }
+  void treeSetPlainText(const QString &data);
+  void treeSetPlainText(const rapidjson::Value &data);
   /* Makes an HTTPS GET request to the URI
    * @param URI The address
    */
@@ -65,4 +77,4 @@ PluginImplement plugin;
 } // namespace UCDPWAB
 
 #endif
-// end UCD_OSI_DATA_MAIN_WIDGET_H
+// end UCDPWAB_PLUGIN_H

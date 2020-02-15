@@ -24,10 +24,17 @@
  */
 namespace UCDPWAB {
 
-size_t writefunc(void *ptr, size_t size, size_t nmemb,
-                                  std::string *s) {
+size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s) {
   s->append((char *)ptr, size * nmemb);
   return size * nmemb;
+}
+
+void PluginImplement::treeSetPlainText(const QString &data) {
+  treeModel->addData(data);
+}
+
+void PluginImplement::treeSetPlainText(const rapidjson::Value &data) {
+  treeModel->addData(data);
 }
 
 rapidjson::Document PluginImplement::httpsGetJSON(std::string URI) {
@@ -127,12 +134,14 @@ void PluginImplement::printJSON_iterator(
                                      "Array", "String", "Number"};
   printf("Type of member %s is %s\n", itr->name.GetString(),
          kTypeNames[itr->value.GetType()]);
+  // object
   if (itr->value.GetType() == 3) {
     const rapidjson::Value &a = itr->value;
     for (rapidjson::Value::ConstMemberIterator itr2 = a.MemberBegin();
          itr2 != a.MemberEnd(); ++itr2) {
       printJSON_iterator(itr2, ++depth);
     }
+    // array
   } else if (itr->value.GetType() == 4) {
     const rapidjson::Value &a = itr->value;
     printJSON_value(a, ++depth);

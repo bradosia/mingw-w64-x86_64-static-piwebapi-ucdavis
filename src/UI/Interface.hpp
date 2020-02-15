@@ -15,6 +15,13 @@
 // c++17
 #include <memory>
 
+/* rapidjson v1.1 (2016-8-25)
+ * Developed by Tencent
+ * License: MITs
+ */
+#include "rapidjson/document.h"
+#include "rapidjson/stringbuffer.h"
+
 /* QT 5.13.2-1
  * License: LGPLv3
  */
@@ -29,6 +36,8 @@ class PluginInterface {
 public:
     virtual void init() = 0;
     virtual std::shared_ptr<QWidget> getWidget() = 0;
+    virtual void treeSetPlainText(const QString &data) = 0;
+    virtual void treeSetPlainText(const rapidjson::Value &data) = 0;
 };
 
 } // namespace UCDPWAB

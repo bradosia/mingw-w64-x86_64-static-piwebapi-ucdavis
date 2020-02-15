@@ -43,7 +43,7 @@ link_directories(
 
 
 # cmake hjson
-add_subdirectory(third_party/hjson ${CMAKE_BINARY_DIR}/hjson)
+add_subdirectory(third_party/hjson)
 add_subdirectory(src/plugins)
 
 set(SOURCES ${SOURCES}
@@ -56,6 +56,7 @@ set(SOURCES ${SOURCES}
   src/UI/universalInclude.hpp
   src/UI/Interface.hpp
   src/core/PluginManager.hpp
+  src/core/Settings.hpp
   src/core/config.hpp
 )
 
@@ -126,3 +127,7 @@ elseif(APPLE)
   )
 endif()
 
+# Post Build
+# Copy default setttings
+add_custom_command(TARGET ${EXENAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy "${PROJECT_SOURCE_DIR}/resources/settings.json" "${CMAKE_BINARY_DIR}")

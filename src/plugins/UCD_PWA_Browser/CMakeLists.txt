@@ -9,12 +9,17 @@ set(libIncludeSubdir UCD_OSI_Data)
 set(SOURCES
   Plugin.cpp
   MainWidget.cpp
+  TreeModel.cpp
+  TreeItem.cpp
 )
 
 set(HEADERS
   Plugin.hpp
   MainWidget.hpp
   universalInclude.hpp
+  TreeModel.hpp
+  TreeItem.hpp
+  config.hpp
 )
 
 set(SHARED_COMPILE_DEFINITIONS

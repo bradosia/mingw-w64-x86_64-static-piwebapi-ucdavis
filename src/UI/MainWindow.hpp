@@ -21,6 +21,7 @@
 // local project
 #include "Interface.hpp"
 #include "../core/PluginManager.hpp"
+#include "../core/Settings.hpp"
 
 class MainWindow : public QMainWindow {
   Q_OBJECT
@@ -32,6 +33,7 @@ public:
 private:
   // ui
   Ui::main ui;
+  std::shared_ptr<UCDPWAB::PluginInterface> UCDPWAB_plugin;
 
 private slots:
   void on_actionEnergy_triggered();

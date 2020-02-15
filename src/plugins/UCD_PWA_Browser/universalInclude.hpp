@@ -14,8 +14,11 @@
  * Icons and images owned by their respective owners
  */
 
-#ifndef UCD_OSI_DATA_UNIVERSAL_INCLUDE_H
-#define UCD_OSI_DATA_UNIVERSAL_INCLUDE_H
+#ifndef UCDPWAB_UNIVERSAL_INCLUDE_H
+#define UCDPWAB_UNIVERSAL_INCLUDE_H
+
+// config
+#include "config.hpp"
 
 // c++17
 //#include <filesystem>
@@ -76,4 +79,4 @@
 #include <QTranslator>
 #include <QTreeView>
 
-#endif
+#endif // UCDPWAB_UNIVERSAL_INCLUDE_H

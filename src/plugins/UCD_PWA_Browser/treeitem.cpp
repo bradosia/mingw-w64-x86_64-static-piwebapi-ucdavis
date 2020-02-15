@@ -49,12 +49,10 @@
 ****************************************************************************/
 
 /*
-    treeitem.cpp
-
-    A container for items of data supplied by the simple tree model.
+    @brief A container for items of data supplied by the simple tree model.
 */
 
-#include "piwebapi-ucdavis/treeitem.h"
+#include "TreeItem.hpp"
 
 //! [0]
 TreeItem::TreeItem(const QVector<QVariant> &data, TreeItem *parent)

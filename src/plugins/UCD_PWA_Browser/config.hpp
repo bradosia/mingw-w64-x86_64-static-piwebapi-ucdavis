@@ -9,10 +9,9 @@
  * Icons and images owned by their respective owners
  */
 
-#ifndef APPLICATION_CONFIG_H
-#define APPLICATION_CONFIG_H
+#ifndef UCDPWAB_CONFIG_H
+#define UCDPWAB_CONFIG_H
 
-#define DEBUG_JSON
 #define SETTINGS_FILE "settings.json"
 
-#endif // APPLICATION_CONFIG_H
+#endif // UCDPWAB_CONFIG_H

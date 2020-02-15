@@ -14,8 +14,8 @@
  * Icons and images owned by their respective owners
  */
 
-#ifndef UCD_OSI_DATA_MAIN_WIDGET_H
-#define UCD_OSI_DATA_MAIN_WIDGET_H
+#ifndef UCDPWAB_MAIN_WIDGET_H
+#define UCDPWAB_MAIN_WIDGET_H
 
 // Universal Include
 #include "universalInclude.hpp"
@@ -38,4 +38,4 @@ public:
 } // namespace UCDPWAB
 
 #endif
-// end UCD_OSI_DATA_MAIN_WIDGET_H
+// end UCDPWAB_H
