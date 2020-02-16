@@ -29,15 +29,15 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s) {
   return size * nmemb;
 }
 
-void PluginImplement::treeSetPlainText(const QString &data) {
+void PluginController::treeSetPlainText(const QString &data) {
   treeModel->addData(data);
 }
 
-void PluginImplement::treeSetPlainText(const rapidjson::Value &data) {
+void PluginController::treeSetPlainText(const rapidjson::Value &data) {
   treeModel->addData(data);
 }
 
-rapidjson::Document PluginImplement::httpsGetJSON(std::string URI) {
+rapidjson::Document PluginController::httpsGetJSON(std::string URI) {
   CURL *curl;
   CURLcode res;
   std::string bufferString;
@@ -111,7 +111,7 @@ rapidjson::Document PluginImplement::httpsGetJSON(std::string URI) {
   return resJSON_Doc;
 }
 
-void PluginImplement::printJSON_value(const rapidjson::Value &a,
+void PluginController::printJSON_value(const rapidjson::Value &a,
                                       unsigned int depth) {
   if (a.IsArray()) {
     rapidjson::SizeType n =
@@ -128,7 +128,7 @@ void PluginImplement::printJSON_value(const rapidjson::Value &a,
   }
 }
 
-void PluginImplement::printJSON_iterator(
+void PluginController::printJSON_iterator(
     rapidjson::Value::ConstMemberIterator &itr, unsigned int depth) {
   static const char *kTypeNames[] = {"Null",  "False",  "True",  "Object",
                                      "Array", "String", "Number"};
@@ -148,7 +148,7 @@ void PluginImplement::printJSON_iterator(
   }
 }
 
-void PluginImplement::getSettingsFile(std::string settingsFileString,
+void PluginController::getSettingsFile(std::string settingsFileString,
                                       std::string &inputURIString,
                                       std::string &outputFileString) {
   // Check if inputFile exists

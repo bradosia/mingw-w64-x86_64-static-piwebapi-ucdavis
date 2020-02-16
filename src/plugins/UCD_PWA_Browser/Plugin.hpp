@@ -30,19 +30,23 @@
  */
 namespace UCDPWAB {
 
-class PluginImplement : public PluginInterface {
+/*
+ * Plugin uses the MVC design pattern.
+ * This is the controller, the view is a QT widget, and the model is the API storage
+ */
+class PluginController : public PluginInterface {
 private:
   std::shared_ptr<TreeModel> treeModel;
   std::shared_ptr<QTreeView> treeView;
 
 public:
-  PluginImplement(QWidget *parent = nullptr) {
+  PluginController(QWidget *parent = nullptr) {
     treeModel = std::make_shared<TreeModel>();
     treeView = std::make_shared<QTreeView>();
     treeView->setModel(treeModel.get());
     treeView->expandAll();
   }
-  ~PluginImplement(){};
+  ~PluginController(){};
 
   void init() { printf("GREETINGS FROM DLL\n"); }
   std::shared_ptr<QWidget> getWidget() {
@@ -71,8 +75,8 @@ size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s);
 
 // Exporting `my_namespace::plugin` variable with alias name `plugin`
 // (Has the same effect as `BOOST_DLL_ALIAS(my_namespace::plugin, plugin)`)
-extern "C" BOOST_SYMBOL_EXPORT PluginImplement plugin;
-PluginImplement plugin;
+extern "C" BOOST_SYMBOL_EXPORT PluginController plugin;
+PluginController plugin;
 
 } // namespace UCDPWAB
 

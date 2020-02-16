@@ -42,8 +42,17 @@ link_directories(
 )
 
 
-# cmake hjson
+# external library - HJSON
 add_subdirectory(third_party/hjson)
+# can't target subdirectory so a proxy target is created
+add_custom_target(hjsonDone)
+add_dependencies(hjsonDone hjson)
+get_target_property(mytarget_basename hjson TARGET_FILE)
+message(STATUS "hello2 ${mytarget_basename}")
+add_custom_command(TARGET hjsonDone POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:hjson> "${CMAKE_BINARY_DIR}")
+
+# external library - PLUGINS
 add_subdirectory(src/plugins)
 
 set(SOURCES ${SOURCES}
