@@ -12,7 +12,7 @@
 #ifndef APPLICATION_CONFIG_H
 #define APPLICATION_CONFIG_H
 
-#define DEBUG_JSON
+#define DEBUG_JSON 1
 #define SETTINGS_FILE "settings.json"
 
 #endif // APPLICATION_CONFIG_H

@@ -33,8 +33,31 @@ void PluginController::treeSetPlainText(const QString &data) {
   treeModel->addData(data);
 }
 
-void PluginController::treeSetPlainText(const rapidjson::Value &data) {
+void PluginController::treeSetJSON(rapidjson::Value &data) {
+#if PLUGIN_DEBUG
+  rapidjson::StringBuffer buffer;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(buffer);
+  data.Accept(writer);
+  std::cout << "treeSetJSON() data:\n" << buffer.GetString() << std::endl;
+#endif
   treeModel->addData(data);
+  treeView->update();
+}
+
+void PluginController::registerSettings(
+    rapidjson::Document &pluginRequest,
+    std::unordered_map<std::string, std::function<void(rapidjson::Value &)>>&
+        pluginCallbackMap) {
+  pluginRequest.SetObject();
+  pluginRequest.AddMember("treeData", "treeSet", pluginRequest.GetAllocator());
+  pluginCallbackMap.insert({"treeSet", std::bind(&PluginController::treeSetJSON,
+                                                 this, std::placeholders::_1)});
+#if PLUGIN_DEBUG
+  std::cout << "Plugin Callback Map:\n";
+  for (auto pairs : pluginCallbackMap) {
+    std::cout << "first:" << pairs.first << std::endl;
+  }
+#endif
 }
 
 rapidjson::Document PluginController::httpsGetJSON(std::string URI) {
@@ -112,7 +135,7 @@ rapidjson::Document PluginController::httpsGetJSON(std::string URI) {
 }
 
 void PluginController::printJSON_value(const rapidjson::Value &a,
-                                      unsigned int depth) {
+                                       unsigned int depth) {
   if (a.IsArray()) {
     rapidjson::SizeType n =
         a.Size(); // rapidjson uses SizeType instead of size_t.
@@ -146,53 +169,6 @@ void PluginController::printJSON_iterator(
     const rapidjson::Value &a = itr->value;
     printJSON_value(a, ++depth);
   }
-}
-
-void PluginController::getSettingsFile(std::string settingsFileString,
-                                      std::string &inputURIString,
-                                      std::string &outputFileString) {
-  // Check if inputFile exists
-  {
-    std::fstream inputFile;
-    inputFile.open(settingsFileString, std::fstream::in);
-    if (!inputFile) {
-      printf("FATAL ERROR: Could not open input file: %s\n",
-             settingsFileString.c_str());
-      return;
-    }
-  }
-  std::fstream settingsFile;
-  printf("Opening settings file: %s\n", settingsFileString.c_str());
-  settingsFile.open(settingsFileString, std::fstream::in);
-  if (settingsFile) {
-    char *settingsFileChar;
-    unsigned int fileSize;
-    rapidjson::Document d;
-
-    settingsFile.seekg(0, std::ios::end); // set the pointer to the end
-    fileSize = settingsFile.tellg();      // get the length of the file
-    settingsFile.seekg(0, std::ios::beg);
-    settingsFileChar = new char[fileSize + 1];
-    memset(settingsFileChar, 0, sizeof(settingsFileChar[0]) * fileSize + 1);
-    settingsFile.read(settingsFileChar, fileSize);
-
-    d.Parse(settingsFileChar);
-    if (d.IsObject()) {
-      if (d.HasMember("URI") && d["URI"].IsString()) {
-        inputURIString = d["URI"].GetString();
-        printf("Input URI Set: %s\n", inputURIString.c_str());
-      }
-      if (d.HasMember("output") && d["output"].IsString()) {
-        outputFileString = d["output"].GetString();
-        printf("Output file Set: %s\n", outputFileString.c_str());
-      }
-    }
-    delete settingsFileChar;
-  } else {
-    printf("No settings file used. Check settings file: %s\n",
-           settingsFileString.c_str());
-  }
-  printf("");
 }
 
 } // namespace UCDPWAB

@@ -18,8 +18,11 @@
 
 // C++
 #include <fstream>
+#include <functional>
 #include <iostream>
+#include <memory>
 #include <string>
+#include <unordered_map>
 
 /* rapidjson v1.1 (2016-8-25)
  * Developed by Tencent
@@ -52,72 +55,33 @@ std::string readFile(std::fstream &fileStream);
 
 class SettingsManager {
   std::string settingsFileNameStr;
+#if USE_RAPID_JSON
+  // settings to look for
+  rapidjson::Document master;
+  std::unordered_map<std::string, std::function<void(rapidjson::Value &data)>>
+      masterCallbackMap;
+#endif
 
 public:
-  SettingsManager(){};
+  SettingsManager(){
+      master.SetObject();
+  };
   ~SettingsManager(){};
+  void deployFile(std::string settingsFileString);
 
-  void getFile(std::string settingsFileString, std::string &inputURIString,
-               std::string &outputFileString) {
-    // Check if settings file exists
-    {
-      std::fstream inputFile;
-      inputFile.open(settingsFileString, std::fstream::in);
-      if (!inputFile) {
-        printf("FATAL ERROR: Could not open input file: %s\n",
-               settingsFileString.c_str());
-        return;
-      }
-    }
-    // open settings file
-    std::fstream settingsFile;
-    printf("Opening settings file: %s\n", settingsFileString.c_str());
-    settingsFile.open(settingsFileString, std::fstream::in);
-    if (settingsFile) {
-      std::string contentStr = readFile(settingsFile);
-#if SETTINGS_MANAGER_DEBUG
-      std::cout << contentStr << std::endl;
-#endif
 #if USE_RAPID_JSON
-      rapidjson::Document d;
-      d.Parse<rapidjson::kParseCommentsFlag |
-                        rapidjson::kParseTrailingCommasFlag>(contentStr.c_str());
-      if (d.IsObject()) {
-        if (d.HasMember("URI") && d["URI"].IsString()) {
-          inputURIString = d["URI"].GetString();
-          printf("Input URI Set: %s\n", inputURIString.c_str());
-        }
-        if (d.HasMember("output") && d["output"].IsString()) {
-          outputFileString = d["output"].GetString();
-          printf("Output file Set: %s\n", outputFileString.c_str());
-        }
-        if (d.HasMember("treeData") && d["treeData"].IsObject()) {
-          printf("treeData FOUND!\n");
-        }
-      } else {
-        printf("JSON PARSE FAILED!\n");
-      }
-#elif USE_HJSON
-      Hjson::Value d = Hjson::Unmarshal(contentStr);
-      if (d.type() == Hjson::Value::MAP) {
-        if (d["URI"] && d["URI"].type() == Hjson::Value::STRING) {
-          inputURIString = d["URI"].to_string();
-          printf("Input URI Set: %s\n", inputURIString.c_str());
-        }
-        if (d["output"] && d["output"].type() == Hjson::Value::STRING) {
-          outputFileString = d["output"].to_string();
-          printf("Output file Set: %s\n", outputFileString.c_str());
-        }
-        if (d["treeData"] && d["treeData"].type() == Hjson::Value::MAP) {
-          printf("treeData FOUND!\n");
-        }
-      }
+  /* Merges the plugin settings with the master
+   */
+  void merge(rapidjson::Value &data,
+             std::unordered_map<std::string,
+                                std::function<void(rapidjson::Value &data)>>);
 #endif
-    } else {
-      printf("No settings file used. Check settings file: %s\n",
-             settingsFileString.c_str());
-    }
-  }
+
+#if USE_RAPID_JSON
+  /* Recursive deploying of settings callbacks
+   */
+  bool deployDOM(rapidjson::Value &dstObject, rapidjson::Value &srcObject);
+#endif
 };
 
 } // namespace bradosia

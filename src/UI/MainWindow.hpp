@@ -28,12 +28,17 @@ class MainWindow : public QMainWindow {
 
 public:
   MainWindow(QWidget *parent = nullptr);
-  ~MainWindow(){};
+  ~MainWindow(){
+      for (auto widgetPtr : centralQWidgetPtrs) {
+        widgetPtr->setParent(nullptr);
+      }
+  };
 
 private:
   // ui
   std::unique_ptr<Ui::main> ui;
   std::shared_ptr<UCDPWAB::PluginInterface> UCDPWAB_plugin;
+  std::vector<std::shared_ptr<QWidget>> centralQWidgetPtrs;
 
 private slots:
   void on_actionEnergy_triggered();

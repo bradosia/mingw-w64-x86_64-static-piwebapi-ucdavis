@@ -51,6 +51,11 @@
 #ifndef TREEMODEL_H
 #define TREEMODEL_H
 
+#define TREE_MODEL_DEBUG 1
+
+// C++
+#include <iostream>
+
 /* rapidjson v1.1 (2016-8-25)
  * Developed by Tencent
  * License: MITs

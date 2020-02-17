@@ -221,6 +221,10 @@ void TreeModel::setupModelData(const rapidjson::Value &name,
     columnData.reserve(2);
     columnData.push_back(name.GetString());
     columnData.push_back("null");
+#if TREE_MODEL_DEBUG
+    std::cout << "setupModelData() New Value(name=" << name.GetString()
+              << ",value=null)" << std::endl;
+#endif
     parent->appendChild(new TreeItem(columnData, parent));
   }
   // 1: false
@@ -229,6 +233,10 @@ void TreeModel::setupModelData(const rapidjson::Value &name,
     columnData.reserve(2);
     columnData.push_back(name.GetString());
     columnData.push_back("false");
+#if TREE_MODEL_DEBUG
+    std::cout << "setupModelData() New Value(name=" << name.GetString()
+              << ",value=false)" << std::endl;
+#endif
     parent->appendChild(new TreeItem(columnData, parent));
   }
   // 2: true
@@ -237,23 +245,31 @@ void TreeModel::setupModelData(const rapidjson::Value &name,
     columnData.reserve(2);
     columnData.push_back(name.GetString());
     columnData.push_back("true");
+#if TREE_MODEL_DEBUG
+    std::cout << "setupModelData() New Value(name=" << name.GetString()
+              << ",value=true)" << std::endl;
+#endif
     parent->appendChild(new TreeItem(columnData, parent));
   }
   // 3: object
   else if (value.GetType() == 3) {
+#if TREE_MODEL_DEBUG
+    std::cout << "setupModelData() Object(name=" << name.GetString() << ")"
+              << std::endl;
+#endif
     // new node
     QVector<QVariant> columnData;
     columnData.reserve(2);
     columnData.push_back(name.GetString());
     std::string valueStr;
-    valueStr.append("array(").append(std::to_string(value.Size())).append(")");
+    valueStr.append("object(").append(")");
     columnData.push_back(valueStr.c_str());
     TreeItem *parentObject = new TreeItem(columnData, parent);
     parent->appendChild(parentObject);
     // add children
     for (rapidjson::Value::ConstMemberIterator itr = value.MemberBegin();
          itr != value.MemberEnd(); ++itr) {
-       setupModelData(itr->name, itr->value, parentObject);
+      setupModelData(itr->name, itr->value, parentObject);
     }
   }
   // 4: array
@@ -284,6 +300,10 @@ void TreeModel::setupModelData(const rapidjson::Value &name,
     columnData.reserve(2);
     columnData.push_back(name.GetString());
     columnData.push_back(value.GetString());
+#if TREE_MODEL_DEBUG
+    std::cout << "setupModelData() New Value(name=" << name.GetString()
+              << ",value=" << value.GetString() << ")" << std::endl;
+#endif
     parent->appendChild(new TreeItem(columnData, parent));
   }
   // 6: number
@@ -292,6 +312,10 @@ void TreeModel::setupModelData(const rapidjson::Value &name,
     columnData.reserve(2);
     columnData.push_back(name.GetString());
     columnData.push_back(value.GetInt());
+#if TREE_MODEL_DEBUG
+    std::cout << "setupModelData() New Value(name=" << name.GetString()
+              << ",value=" << value.GetInt() << ")" << std::endl;
+#endif
     parent->appendChild(new TreeItem(columnData, parent));
   }
 }

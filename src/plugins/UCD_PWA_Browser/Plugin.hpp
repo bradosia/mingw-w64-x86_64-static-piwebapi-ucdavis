@@ -32,7 +32,8 @@ namespace UCDPWAB {
 
 /*
  * Plugin uses the MVC design pattern.
- * This is the controller, the view is a QT widget, and the model is the API storage
+ * This is the controller, the view is a QT widget, and the model is the API
+ * storage
  */
 class PluginController : public PluginInterface {
 private:
@@ -54,7 +55,11 @@ public:
     return widget;
   }
   void treeSetPlainText(const QString &data);
-  void treeSetPlainText(const rapidjson::Value &data);
+  void treeSetJSON(rapidjson::Value &data);
+  void registerSettings(
+      rapidjson::Document &pluginRequest,
+      std::unordered_map<std::string, std::function<void(rapidjson::Value &)>>
+          &pluginCallbackMap);
   /* Makes an HTTPS GET request to the URI
    * @param URI The address
    */
@@ -63,9 +68,6 @@ public:
   void printJSON_value(const rapidjson::Value &a, unsigned int depth);
   void printJSON_iterator(rapidjson::Value::ConstMemberIterator &itr,
                           unsigned int depth);
-  void getSettingsFile(std::string settingsFileString,
-                       std::string &inputURIString,
-                       std::string &outputFileString);
 };
 
 /* Writes data from HTTP request into a string buffer

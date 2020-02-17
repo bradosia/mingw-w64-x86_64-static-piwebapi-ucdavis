@@ -21,47 +21,53 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
   /* Plugins
    */
   bradosia::PluginManager pluginManagerObj;
+  bradosia::SettingsManager settingsManagerObj;
   pluginManagerObj.addPluginInterface<UCDPWAB::PluginInterface>("plugin");
   pluginManagerObj.loadPlugins("plugins");
   UCDPWAB_plugin =
       pluginManagerObj.getPlugin<UCDPWAB::PluginInterface>("plugin");
-  std::vector<std::shared_ptr<QWidget>> central_QWidgetPtrs;
   if (UCDPWAB_plugin) {
-    printf("PLUGIN FOUND\n");
+    printf("UCDPWAB PLUGIN FOUND\n");
+    /* register widgets
+     */
     UCDPWAB_plugin->init();
     std::shared_ptr<QWidget> UCDPWAB_Widget = UCDPWAB_plugin->getWidget();
-    central_QWidgetPtrs.push_back(UCDPWAB_Widget);
+    centralQWidgetPtrs.push_back(UCDPWAB_Widget);
+    /* register settings
+     */
+    rapidjson::Document pluginRequest;
+    std::unordered_map<std::string,
+                       std::function<void(rapidjson::Value & data)>>
+        pluginCallbackMap;
+    UCDPWAB_plugin->registerSettings(pluginRequest, pluginCallbackMap);
+    settingsManagerObj.merge(pluginRequest, pluginCallbackMap);
 
     // Plain text tree start
     // Open resource file
     QFile file(":menu/default.txt");
     file.open(QIODevice::ReadOnly);
     // Add to Tree
-    UCDPWAB_plugin->treeSetPlainText(file.readAll());
+    // UCDPWAB_plugin->treeSetPlainText(file.readAll());
     // Close file
     file.close();
   }
 
-  /* Get settings
+  /* Get the settings
    */
-  std::string test1;
-  std::string test2;
-  bradosia::SettingsManager settingsManagerObj;
-  settingsManagerObj.getFile(SETTINGS_FILE, test1, test2);
+  settingsManagerObj.deployFile(SETTINGS_FILE);
 
   /* find the layout in the centralWidget
    * add the plugin widgets to the layout
    */
-
   printf("===== DEBUG: ATTEMPTING TO FIND CENTRAL... =====\n");
   QList<QHBoxLayout *> widgetCentralWidgetList =
       this->findChildren<QHBoxLayout *>("horizontalLayout",
                                         Qt::FindChildrenRecursively);
   if (!widgetCentralWidgetList.empty()) {
     printf("===== DEBUG: CENTRAL FOUND =====\n");
-    QHBoxLayout *layout = widgetCentralWidgetList.at(0);
-    for (auto widgetPtr : central_QWidgetPtrs) {
-      //layout->addWidget(widgetPtr.get());
+    //QHBoxLayout* centralLayout = widgetCentralWidgetList.at(0);
+    for (auto widgetPtr : centralQWidgetPtrs) {
+      widgetCentralWidgetList.at(0)->addWidget(widgetPtr.get());
     }
   }
 }

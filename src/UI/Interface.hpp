@@ -13,7 +13,9 @@
 #define UCDPWAB_INTERFACE_H
 
 // c++17
+#include <functional>
 #include <memory>
+#include <unordered_map>
 
 /* rapidjson v1.1 (2016-8-25)
  * Developed by Tencent
@@ -34,10 +36,14 @@ namespace UCDPWAB {
 
 class PluginInterface {
 public:
-    virtual void init() = 0;
-    virtual std::shared_ptr<QWidget> getWidget() = 0;
-    virtual void treeSetPlainText(const QString &data) = 0;
-    virtual void treeSetPlainText(const rapidjson::Value &data) = 0;
+  virtual void init() = 0;
+  virtual std::shared_ptr<QWidget> getWidget() = 0;
+  virtual void registerSettings(
+      rapidjson::Document &pluginRequest,
+      std::unordered_map<std::string, std::function<void(rapidjson::Value &)>>
+          &pluginCallbackMap) = 0;
+  virtual void treeSetPlainText(const QString &data) = 0;
+  virtual void treeSetJSON(rapidjson::Value &data) = 0;
 };
 
 } // namespace UCDPWAB

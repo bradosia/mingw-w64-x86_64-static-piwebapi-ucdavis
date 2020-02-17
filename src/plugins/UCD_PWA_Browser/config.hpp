@@ -13,5 +13,6 @@
 #define UCDPWAB_CONFIG_H
 
 #define SETTINGS_FILE "settings.json"
+#define PLUGIN_DEBUG 1
 
 #endif // UCDPWAB_CONFIG_H
