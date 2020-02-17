@@ -21,8 +21,8 @@
  * Developed by Tencent
  * License: MITs
  */
-#include "rapidjson/document.h"
-#include "rapidjson/stringbuffer.h"
+#include <rapidjson/document.h>
+#include <rapidjson/stringbuffer.h>
 
 /* QT 5.13.2-1
  * License: LGPLv3

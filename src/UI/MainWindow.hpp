@@ -18,8 +18,10 @@
 // universal includes
 #include "universalInclude.hpp"
 
+// UCD_PWA_Browser
+#include <UCD_PWA_Browser/Interface.hpp>
+
 // local project
-#include "Interface.hpp"
 #include "../core/PluginManager.hpp"
 #include "../core/SettingsManager.hpp"
 

@@ -20,6 +20,7 @@ set(HEADERS
   TreeModel.hpp
   TreeItem.hpp
   config.hpp
+  Interface.hpp
 )
 
 set(SHARED_COMPILE_DEFINITIONS

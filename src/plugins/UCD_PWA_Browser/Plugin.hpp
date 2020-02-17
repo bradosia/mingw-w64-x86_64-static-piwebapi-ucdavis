@@ -20,7 +20,7 @@
 // Universal Include
 #include "universalInclude.hpp"
 
-#include "../../UI/Interface.hpp"
+#include "Interface.hpp"
 #include "MainWidget.hpp"
 #include "TreeItem.hpp"
 #include "TreeModel.hpp"

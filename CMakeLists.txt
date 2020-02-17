@@ -64,7 +64,6 @@ set(SOURCES ${SOURCES}
   src/UI/Application.hpp
   src/UI/MainWindow.hpp
   src/UI/universalInclude.hpp
-  src/UI/Interface.hpp
   src/core/PluginManager.hpp
   src/core/SettingsManager.hpp
   src/core/config.hpp
@@ -119,6 +118,7 @@ target_link_libraries(${EXENAME} PRIVATE
 target_include_directories(${EXENAME} PRIVATE
   third_party
   third_party/hjson/include
+  src/plugins
 )
 
 if(APPLE)
