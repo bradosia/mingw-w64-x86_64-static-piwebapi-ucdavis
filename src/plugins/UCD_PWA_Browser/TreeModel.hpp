@@ -95,7 +95,6 @@ private:
   void setupModelData(const QStringList &lines, TreeItem *parent);
   void setupModelData(const rapidjson::Value &name,
                       const rapidjson::Value &value, TreeItem *parent);
-
   TreeItem *rootItem;
 };
 //! [0]

@@ -70,6 +70,13 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
       widgetCentralWidgetList.at(0)->addWidget(widgetPtr.get());
     }
   }
+
+  // QTreeView specific
+  if(!centralQWidgetPtrs.empty()){
+      std::shared_ptr<QTreeView> test = std::dynamic_pointer_cast<QTreeView>(centralQWidgetPtrs[0]);
+      test->expandAll();
+      test->setColumnWidth(0, 200);
+  }
 }
 
 void MainWindow::on_actionEnergy_triggered() {

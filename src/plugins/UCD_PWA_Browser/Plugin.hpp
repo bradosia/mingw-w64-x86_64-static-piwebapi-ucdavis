@@ -45,7 +45,6 @@ public:
     treeModel = std::make_shared<TreeModel>();
     treeView = std::make_shared<QTreeView>();
     treeView->setModel(treeModel.get());
-    treeView->expandAll();
   }
   ~PluginController(){};
 
