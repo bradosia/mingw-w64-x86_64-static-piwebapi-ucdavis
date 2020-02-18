@@ -12,7 +12,7 @@ Top Level
   * In an Model-View-Controller (MVC) design this is the View
 * /core/
   * All non-user interface code. Does not include QT.
-        * Although QT includes non-UI features, the entire QT framework is considered as UI since the non-UI features would not be seperable in case the UI framework was changed to another framework.
+  * Although QT includes non-UI features, the entire QT framework is considered as UI since the non-UI features would not be seperable in case the UI framework was changed to another framework.
   * In an Model-View-Controller (MVC) design this is the Model
 
 
