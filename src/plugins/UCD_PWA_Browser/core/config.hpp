@@ -12,8 +12,9 @@
 #ifndef UCDPWAB_CONFIG_H
 #define UCDPWAB_CONFIG_H
 
-#define SETTINGS_FILE "settings.json"
+#define API_FILE "api.json"
 #define PLUGIN_DEBUG 1
 #define SKIP_PEER_VERIFICATION 1
+#define HTTP_JSON_DEBUG 1
 
 #endif // UCDPWAB_CONFIG_H

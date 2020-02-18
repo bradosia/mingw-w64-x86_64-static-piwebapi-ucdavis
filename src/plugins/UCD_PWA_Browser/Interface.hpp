@@ -42,8 +42,19 @@ public:
       rapidjson::Document &pluginRequest,
       std::unordered_map<std::string, std::function<void(rapidjson::Value &)>>
           &pluginCallbackMap) = 0;
-  virtual void treeSetPlainText(const QString &data) = 0;
+  /* Set the tree with indented text
+   */
+  virtual void treeSetPlainText(std::string &data) = 0;
+  /* Set the tree with JSON
+   */
   virtual void treeSetJSON(rapidjson::Value &data) = 0;
+  /* load UC Davis building information
+   * Does not display the data
+   * @return Returns a progress handle
+   */
+  virtual int loadBuildingInfo(std::function<void(void)>&) = 0;
+  virtual void viewBuildingInfo() = 0;
+  virtual void loadProgress(int handle) = 0;
 };
 
 } // namespace UCDPWAB

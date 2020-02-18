@@ -56,6 +56,9 @@
 #include "TreeModel.hpp"
 #include "TreeItem.hpp"
 
+// Boost
+#include <boost/algorithm/string.hpp>
+
 // QT
 #include <QStringList>
 
@@ -65,8 +68,10 @@ TreeModel::TreeModel(QObject *parent) : QAbstractItemModel(parent) {
 
 TreeModel::~TreeModel() { delete rootItem; }
 
-void TreeModel::addData(const QString &data) {
-  setupModelData(data.split('\n'), rootItem);
+void TreeModel::addData(const std::string &data) {
+  std::vector<std::string> result;
+  boost::split(result, data, boost::is_any_of("\n"));
+  setupModelData(result, rootItem);
 }
 
 void TreeModel::addData(const rapidjson::Value &data) {
@@ -151,50 +156,55 @@ int TreeModel::rowCount(const QModelIndex &parent) const {
   return parentItem->childCount();
 }
 
-void TreeModel::setupModelData(const QStringList &lines, TreeItem *parent) {
-  QVector<TreeItem *> parents;
-  QVector<int> indentations;
-  parents << parent;
-  indentations << 0;
+void TreeModel::setupModelData(const std::vector<std::string> &lines,
+                               TreeItem *parent) {
+  std::vector<TreeItem *> parents;
+  std::vector<unsigned int> indentations;
+  parents.push_back(parent);
+  indentations.push_back(0);
 
-  int number = 0;
+  unsigned int number = 0;
 
-  while (number < lines.count()) {
-    int position = 0;
+  while (number < lines.size()) {
+    unsigned int position = 0;
     while (position < lines[number].length()) {
       if (lines[number].at(position) != ' ')
         break;
       position++;
     }
 
-    const QString lineData = lines[number].mid(position).trimmed();
+    std::string lineData = lines[number].substr(position);
+    boost::trim(lineData);
 
-    if (!lineData.isEmpty()) {
+    if (!lineData.empty()) {
       // Read the column data from the rest of the line.
-      const QStringList columnStrings =
-          lineData.split('\t', QString::SkipEmptyParts);
-      QVector<QVariant> columnData;
-      columnData.reserve(columnStrings.count());
-      for (const QString &columnString : columnStrings)
-        columnData << columnString;
 
-      if (position > indentations.last()) {
+      std::vector<std::string> columnStrings;
+      boost::split(columnStrings, lineData, boost::is_any_of("\t"));
+
+      QVector<QVariant> columnData;
+      columnData.reserve(columnStrings.size());
+      for (const std::string &columnString : columnStrings) {
+        columnData.push_back(columnString.c_str());
+      }
+
+      if (position > indentations.back()) {
         // The last child of the current parent is now the new parent
         // unless the current parent has no children.
 
-        if (parents.last()->childCount() > 0) {
-          parents << parents.last()->child(parents.last()->childCount() - 1);
-          indentations << position;
+        if (parents.back()->childCount() > 0) {
+          parents.push_back(parents.back()->child(parents.back()->childCount() - 1));
+          indentations.push_back(position);
         }
       } else {
-        while (position < indentations.last() && parents.count() > 0) {
+        while (position < indentations.back() && parents.size() > 0) {
           parents.pop_back();
           indentations.pop_back();
         }
       }
 
       // Append a new item to the current parent's list of children.
-      parents.last()->appendChild(new TreeItem(columnData, parents.last()));
+      parents.back()->appendChild(new TreeItem(columnData, parents.back()));
     }
     ++number;
   }

@@ -19,7 +19,7 @@
  */
 namespace UCDPWAB {
 
-void PluginController::treeSetPlainText(const QString &data) {
+void PluginController::treeSetPlainText(std::string &data) {
   treeModel->addData(data);
 }
 
@@ -36,8 +36,8 @@ void PluginController::treeSetJSON(rapidjson::Value &data) {
 
 void PluginController::registerSettings(
     rapidjson::Document &pluginRequest,
-    std::unordered_map<std::string, std::function<void(rapidjson::Value &)>>&
-        pluginCallbackMap) {
+    std::unordered_map<std::string, std::function<void(rapidjson::Value &)>>
+        &pluginCallbackMap) {
   pluginRequest.SetObject();
   pluginRequest.AddMember("treeData", "treeSet", pluginRequest.GetAllocator());
   pluginCallbackMap.insert({"treeSet", std::bind(&PluginController::treeSetJSON,
@@ -48,6 +48,17 @@ void PluginController::registerSettings(
     std::cout << "first:" << pairs.first << std::endl;
   }
 #endif
+}
+
+int PluginController::loadBuildingInfo(std::function<void(void)> &callback) {
+  api->loadBuildingInfo(callback);
+  return 0;
+}
+void PluginController::viewBuildingInfo() {
+
+}
+void PluginController::loadProgress(int handle) {
+
 }
 
 } // namespace UCDPWAB

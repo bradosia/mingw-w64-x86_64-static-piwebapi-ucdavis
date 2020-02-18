@@ -36,12 +36,14 @@ class PluginController : public PluginInterface {
 private:
   std::shared_ptr<TreeModel> treeModel;
   std::shared_ptr<QTreeView> treeView;
+  std::shared_ptr<PiWebAPI> api;
 
 public:
   PluginController(QWidget *parent = nullptr) {
     treeModel = std::make_shared<TreeModel>();
     treeView = std::make_shared<QTreeView>();
     treeView->setModel(treeModel.get());
+    api = std::make_shared<PiWebAPI>();
   }
   ~PluginController(){};
 
@@ -50,12 +52,15 @@ public:
     std::shared_ptr<QWidget> widget = treeView;
     return widget;
   }
-  void treeSetPlainText(const QString &data);
+  void treeSetPlainText(std::string &data);
   void treeSetJSON(rapidjson::Value &data);
   void registerSettings(
       rapidjson::Document &pluginRequest,
       std::unordered_map<std::string, std::function<void(rapidjson::Value &)>>
           &pluginCallbackMap);
+  int loadBuildingInfo(std::function<void(void)>& callback);
+  void viewBuildingInfo();
+  void loadProgress(int handle);
 };
 
 // Exporting `my_namespace::plugin` variable with alias name `plugin`

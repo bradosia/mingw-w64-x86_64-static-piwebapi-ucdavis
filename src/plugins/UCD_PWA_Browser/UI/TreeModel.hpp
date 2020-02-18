@@ -93,7 +93,7 @@ public:
   explicit TreeModel(QObject *parent = nullptr);
   ~TreeModel();
 
-  void addData(const QString &data);
+  void addData(const std::string &data);
   void addData(const rapidjson::Value &data);
   QVariant data(const QModelIndex &index, int role) const override;
   Qt::ItemFlags flags(const QModelIndex &index) const override;
@@ -106,7 +106,7 @@ public:
   int columnCount(const QModelIndex &parent = QModelIndex()) const override;
 
 private:
-  void setupModelData(const QStringList &lines, TreeItem *parent);
+  void setupModelData(const std::vector<std::string> &lines, TreeItem *parent);
   void setupModelData(const rapidjson::Value &name,
                       const rapidjson::Value &value, TreeItem *parent);
   TreeItem *rootItem;

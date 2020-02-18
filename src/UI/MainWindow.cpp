@@ -77,6 +77,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
       test->expandAll();
       test->setColumnWidth(0, 200);
   }
+
+  if (UCDPWAB_plugin) {
+      //UCDPWAB_plugin->loadBuildingInfo();
+  }
 }
 
 void MainWindow::on_actionEnergy_triggered() {

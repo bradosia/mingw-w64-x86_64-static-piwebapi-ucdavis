@@ -15,17 +15,31 @@
 // Universal Include
 #include "UI/universalInclude.hpp"
 
+// local project
+#include "HTTP_JSON.hpp"
+
 /*
  * UCDPWAB = UC Davis PI Web API Browser
  */
 namespace UCDPWAB {
 
+/* Might be used as building info elements in the future
+ */
+class BuildingInfo {};
+
 class PiWebAPI {
 private:
+  bradosia::HTTP_JSON HTTP_JSON_Obj;
+  std::shared_ptr<rapidjson::Document> buildingData;
 
 public:
-  PiWebAPI() {}
-  ~PiWebAPI(){};
+  PiWebAPI() {
+      buildingData = std::make_shared<rapidjson::Document>();
+  }
+  ~PiWebAPI() {}
+  int loadBuildingInfo(std::function<void(void)> &callback);
+  void loadBuildingInfoCallback(size_t pos);
+  void loadHTTP_Calls();
 };
 
 } // namespace UCDPWAB

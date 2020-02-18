@@ -34,14 +34,6 @@
  */
 #include <boost/config.hpp> // for BOOST_SYMBOL_EXPORT
 
-/*
- * CURL 7.68.0
- * License: MIT/X inspired
- */
-#define CURL_STATICLIB
-#include <brotli/decode.h>
-#include <curl/curl.h>
-
 /* rapidjson v1.1 (2016-8-25)
  * Developed by Tencent
  * License: MITs
