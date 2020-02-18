@@ -80,7 +80,6 @@ int TreeModel::columnCount(const QModelIndex &parent) const {
   return rootItem->columnCount();
 }
 
-//! [3]
 QVariant TreeModel::data(const QModelIndex &index, int role) const {
   if (!index.isValid())
     return QVariant();
@@ -92,18 +91,14 @@ QVariant TreeModel::data(const QModelIndex &index, int role) const {
 
   return item->data(index.column());
 }
-//! [3]
 
-//! [4]
 Qt::ItemFlags TreeModel::flags(const QModelIndex &index) const {
   if (!index.isValid())
     return Qt::NoItemFlags;
 
   return QAbstractItemModel::flags(index);
 }
-//! [4]
 
-//! [5]
 QVariant TreeModel::headerData(int section, Qt::Orientation orientation,
                                int role) const {
   if (orientation == Qt::Horizontal && role == Qt::DisplayRole)
@@ -111,9 +106,7 @@ QVariant TreeModel::headerData(int section, Qt::Orientation orientation,
 
   return QVariant();
 }
-//! [5]
 
-//! [6]
 QModelIndex TreeModel::index(int row, int column,
                              const QModelIndex &parent) const {
   if (!hasIndex(row, column, parent))
@@ -131,9 +124,7 @@ QModelIndex TreeModel::index(int row, int column,
     return createIndex(row, column, childItem);
   return QModelIndex();
 }
-//! [6]
 
-//! [7]
 QModelIndex TreeModel::parent(const QModelIndex &index) const {
   if (!index.isValid())
     return QModelIndex();
@@ -146,9 +137,7 @@ QModelIndex TreeModel::parent(const QModelIndex &index) const {
 
   return createIndex(parentItem->row(), 0, parentItem);
 }
-//! [7]
 
-//! [8]
 int TreeModel::rowCount(const QModelIndex &parent) const {
   TreeItem *parentItem;
   if (parent.column() > 0)
@@ -161,7 +150,6 @@ int TreeModel::rowCount(const QModelIndex &parent) const {
 
   return parentItem->childCount();
 }
-//! [8]
 
 void TreeModel::setupModelData(const QStringList &lines, TreeItem *parent) {
   QVector<TreeItem *> parents;

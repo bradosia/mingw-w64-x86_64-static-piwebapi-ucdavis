@@ -1,14 +1,9 @@
 /*
- * @name UC Davis 3D Analyzer
- * @author Brad Lee & SiYi Meng
- * @version 1.01
+ * @name UC Davis PI Web API Browser
+ * @author Branden Lee
+ * @version 1.00
  * @license GNU LGPL v3
- * @brief 3D map of UC Davis electricity usage
- *
- * QT and OCC integration:
- * Copyright (c) 2018 Shing Liu (eryar@163.com)
- * License: MIT
- * Source: https://github.com/eryar/occQt
+ * @brief Browser for UC Davis PI Web API data.
  *
  * Data from OSIsoft and UC Davis
  * Icons and images owned by their respective owners
@@ -18,12 +13,14 @@
 #define UCDPWAB_PLUGIN_H
 
 // Universal Include
-#include "universalInclude.hpp"
+#include "UI/universalInclude.hpp"
 
 #include "Interface.hpp"
-#include "MainWidget.hpp"
-#include "TreeItem.hpp"
-#include "TreeModel.hpp"
+#include "UI/MainWidget.hpp"
+#include "UI/TreeItem.hpp"
+#include "UI/TreeModel.hpp"
+#include "core/HTTP_JSON.hpp"
+#include "core/PiWebAPI.hpp"
 
 /*
  * UCDPWAB = UC Davis PI Web API Browser
@@ -59,20 +56,7 @@ public:
       rapidjson::Document &pluginRequest,
       std::unordered_map<std::string, std::function<void(rapidjson::Value &)>>
           &pluginCallbackMap);
-  /* Makes an HTTPS GET request to the URI
-   * @param URI The address
-   */
-  rapidjson::Document httpsGetJSON(std::string URI);
-  std::string JSON_Format(rapidjson::Document JSON_Doc);
-  void printJSON_value(const rapidjson::Value &a, unsigned int depth);
-  void printJSON_iterator(rapidjson::Value::ConstMemberIterator &itr,
-                          unsigned int depth);
 };
-
-/* Writes data from HTTP request into a string buffer
- * @param ptr data address
- */
-size_t writefunc(void *ptr, size_t size, size_t nmemb, std::string *s);
 
 // Exporting `my_namespace::plugin` variable with alias name `plugin`
 // (Has the same effect as `BOOST_DLL_ALIAS(my_namespace::plugin, plugin)`)

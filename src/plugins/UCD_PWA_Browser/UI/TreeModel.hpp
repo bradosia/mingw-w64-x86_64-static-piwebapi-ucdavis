@@ -48,6 +48,17 @@
 **
 ****************************************************************************/
 
+/*
+ * @name UC Davis PI Web API Browser
+ * @author Branden Lee
+ * @version 1.00
+ * @license GNU LGPL v3
+ * @brief Browser for UC Davis PI Web API data.
+ *
+ * Data from OSIsoft and UC Davis
+ * Icons and images owned by their respective owners
+ */
+
 #ifndef TREEMODEL_H
 #define TREEMODEL_H
 
@@ -71,7 +82,10 @@
 
 class TreeItem;
 
-//! [0]
+/*
+ * @brief Provides a simple tree model to show how to create and use
+ * hierarchical models.
+ */
 class TreeModel : public QAbstractItemModel {
   Q_OBJECT
 
@@ -97,6 +111,5 @@ private:
                       const rapidjson::Value &value, TreeItem *parent);
   TreeItem *rootItem;
 };
-//! [0]
 
 #endif // TREEMODEL_H

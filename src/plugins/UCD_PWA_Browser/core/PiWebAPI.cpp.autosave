@@ -9,10 +9,12 @@
  * Icons and images owned by their respective owners
  */
 
-#ifndef UCDPWAB_CONFIG_H
-#define UCDPWAB_CONFIG_H
+// local project
+#include "PiWebAPI.hpp"
 
-#define SETTINGS_FILE "settings.json"
-#define PLUGIN_DEBUG 1
+/*
+ * UCDPWAB = UC Davis PI Web API Browser
+ */
+namespace UCDPWAB {
 
-#endif // UCDPWAB_CONFIG_H
+} // namespace UCDPWAB

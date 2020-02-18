@@ -8,19 +8,23 @@ set(libIncludeSubdir UCD_OSI_Data)
 # Set up source files
 set(SOURCES
   Plugin.cpp
-  MainWidget.cpp
-  TreeModel.cpp
-  TreeItem.cpp
+  UI/MainWidget.cpp
+  UI/TreeModel.cpp
+  UI/TreeItem.cpp
+  core/HTTP_JSON.cpp
+  core/PiWebAPI.cpp
 )
 
 set(HEADERS
   Plugin.hpp
-  MainWidget.hpp
-  universalInclude.hpp
-  TreeModel.hpp
-  TreeItem.hpp
-  config.hpp
   Interface.hpp
+  UI/MainWidget.hpp
+  UI/universalInclude.hpp
+  UI/TreeModel.hpp
+  UI/TreeItem.hpp
+  core/config.hpp
+  core/HTTP_JSON.hpp
+  core/PiWebAPI.hpp
 )
 
 set(SHARED_COMPILE_DEFINITIONS
